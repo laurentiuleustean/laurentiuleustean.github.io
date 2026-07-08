@@ -1,0 +1,536 @@
+\documentclass[12pt]{article}
+
+
+
+\input{macros-sem}
+
+\parindent0pt
+
+%\usepackage{pgf}
+%\usepackage{tikz}
+%\usepackage[utf8]{inputenc}
+%\usetikzlibrary{arrows,automata}
+%\usetikzlibrary{positioning}
+
+
+\newcommand{\probex}{\stepcounter{uebno}{\vspace{0.3cm}\noindent \bf (P\arabic{uebno}) }}
+\newcommand{\solution}[1]{$\,$ \\ \begin{proof}#1 \qed \end{proof}}
+\newcommand{\solutiong}[1]{$\,$ \\ \begin{proof}\mbox{}\\#1 \qed \end{proof}}
+
+%%%%%%%decomentat in normal, comentat in sol si in sol-grila:
+\renewcommand{\solution}[1]{}
+\renewcommand{\boxtimes}{\Box}
+
+%%%%%%%decomentat in normal si sol, comentat in sol-grila:
+\renewcommand{\solutiong}[1]{}
+
+ 
+\begin{document}
+
+
+\setcounter{uebno}{0}
+\renewcommand{\beschreibung}{Model de examen} 
+
+\renewcommand{\veranstaltung}{{\footnotesize Logic\u a matematic\u a \c si computa\c tional\u a}}
+
+\newsavebox{\tema}
+\savebox{\tema}{\raisebox{-11pt}{\parbox[t]{8cm}{\bf {\footnotesize FMI, Info, Anul I}\\ \veranstaltung}}}
+\renewcommand{\titel}{ 
+\usebox{\tema}  
+\bigskip
+\vspace{2mm}
+\begin{center}
+{\Large \bf Model de examen} 
+
+
+ \end{center} \vspace{5mm}
+}
+
+%\pagestyle{empty}
+
+\titel
+
+\thispagestyle{empty}
+
+%\vspace{-1cm}
+%\begin{flushleft}
+%{
+%\textbf{Nume: \underline{\hspace{5cm}}}
+
+%\vspace{.4cm}
+%\textbf{Prenume: \underline{\hspace{4cm}}}
+
+%\vspace{.4cm}
+%\textbf{Grupa: \underline{\hspace{4.7cm}}}
+
+%}
+%\end{flushleft}
+
+
+%---------------------------------------------
+\pagenumbering{arabic}
+\vspace{-1cm}
+% \begin{flushleft}
+% {
+% \textbf{Nume: \underline{\hspace{5cm}}}
+
+% \vspace{.4cm}
+% \textbf{Prenume: \underline{\hspace{4.4cm}}}
+
+% \vspace{.4cm}
+% \textbf{Grupa: \underline{\hspace{4.9cm}}}
+
+% }
+% \end{flushleft}
+
+\vspace{.2cm}
+
+
+\section*{Partea I. Probleme cu rezolvare clasic\u a}
+\probex[1 punct]
+Fie $LP$ logica propozi\c tional\u a, $\cE$ o mul\c time de evalu\u ari \c si
+$$\Gamma=\{\psi \in Form \mid e\taut \psi \text{ pentru orice } e\in \cE\}.$$
+ Presupunem c\u a $\cE$ are cel pu\c tin dou\u a elemente.  Demonstra\c ti c\u a exist\u a o formul\u a $\vp$  cu proprietatea c\u a $\vp\notin \Gamma$ \c si $\neg \vp\notin \Gamma$. 
+ 
+\solution{Fie $e,f$ dou\u a evalu\u ari distincte din $\cE$. Atunci exist\u a $v\in V$ \ai $e(v)\ne f(v)$. Avem dou\u a cazuri:
+\be
+\item $e(v)=0$ \c si $f(v)=1$, deci $f(\neg v)=0$. Deoarece $e\ntaut v$,  avem c\u a $v\notin \Gamma$. 
+Deoarece $f\ntaut \neg  v$, avem c\u a $\neg v\notin \Gamma$.
+\item $e(v)=1$ \c si $f(v)=0$. Similar.
+\ee
+}
+\probex[1 punct]
+Fie $LP$ logica propozi\c tional\u a \c si $\vp$, $\psi \in Form$. Demonstra\c ti sintactic c\u a:
+$$\vdash \vp \si \psi \dnd \psi \si \vp.$$
+\solution{ 
+Avem:\\[1mm]
+\bt{lll}
+(1) & $\{\psi,\vp\}\vdash \psi\si \vp$ &  Propozi\c tia 1.68, (48)\\
+(2) & $\{\vp,\psi\} \vdash \psi\si \vp$ & deoarece $\{\psi,\vp\}=\{\vp,\psi\}$ \\
+(3) & $\{\vp\si \psi\} \vdash \psi\si \vp$ & Propozi\c tia 1.68, (49) \c si (2)\\
+(4)  & $\vdash \vp \si \psi \ra \psi \si \vp$ & Teorema deduc\c tiei: (3)\\
+(5) & $\vdash  \psi \si \vp \ra \vp \si \psi $ & se demonstreaz\u a similar\\
+(6) & $\{ \vp \si \psi \ra \psi \si \vp, \psi \si \vp \ra \vp \si \psi\}\vdash \vp \si \psi \dnd \psi \si \vp$ & Propozi\c tia 1.68, (48) \\
+(7) & $\vdash  (\vp \si \psi \ra \psi \si \vp)\ra \big((\psi \si \vp \ra \vp \si \psi)\ra (\vp \si \psi \dnd \psi \si \vp)\big)$ & Teorema deduc\c tiei: (6)\\
+(8) & $\vdash (\psi \si \vp \ra \vp \si \psi)\ra (\vp \si \psi \dnd \psi \si \vp)$ & (MP): (4), (7)\\
+(9) & $\vdash \vp \si \psi \dnd \psi \si \vp$ & (MP): (5), (8).
+\et
+}
+
+\probex[1 punct]
+Fie $\lc$ un limbaj de ordinul \^int\^ai \c si $\Gamma$ o mul\c time de enun\c turi ale lui $\lc$. 
+Demonstra\c ti urm\u atoarele:
+\be
+\item $Mod(\Gamma)=Mod(Th(\Gamma))$.
+\item $Th(\Gamma)$ este o $\lc$-teorie.
+\item Fie $T$ o $\lc$-teorie  \ai $\Gamma \se T$. Atunci $Th(\Gamma) \se T$.
+\ee
+\solution{
+\be
+\item "$\supseteq$"  Pentru orice $\vp\in \Gamma$, avem c\u a $\Gamma \models \vp$, deci  $\vp\in Th(\Gamma)$.  A\c sadar, $\Gamma\se Th(\Gamma)$.  Aplic\u am  Lema~2.34.(ii). \\
+"$\subseteq$" Fie $\cA \in Mod(\Gamma)$ \c si $\vp\in Th(\Gamma)$ arbitrar. Avem c\u a 
+$\cA \models \Gamma$ \c si $\Gamma\models \vp$, deci $\cA\models \vp$.  A\c sadar, $\cA\in  
+Mod(Th(\Gamma))$.
+\item   Demonstr\u am c\u a $Th(\Gamma)$ este o $\lc$-teorie. Pentru orice enun\c t $\vp$,  avem c\u a
+\bua 
+Th(\Gamma)\models \vp & \Ba & Mod(Th(\Gamma))\se Mod(\vp)
+\Ba Mod(\Gamma)\se Mod(\vp) \text{~(conform (i))} \\
+& \Ba & \Gamma\models\vp \Ba \vp \in Th(\Gamma).
+\eua
+
+\item Fie $T$ o $\lc$-teorie care con\c tine $\Gamma$ \c si $\vp\in Th(\Gamma)$. Din 
+$Mod(\Gamma)\se Mod(\vp)$ \c si $Mod(T)\se Mod(\Gamma)$ rezult\u a c\u a $Mod(T)\se Mod(\vp)$, deci
+$T\models \vp$. Deoarece $T$ este$\lc$-teorie, ob\c tinem c\u a $\vp\in T$. A\c sadar, $Th(\Gamma)\se T$.
+\ee
+}
+
+\probex[1 punct]
+Fie $\lc$ un limbaj de ordinul \^int\^ai \c si  \c si  $\Gamma$ o mul\c{t}ime de enun\c{t}uri ale lui $\lc$ cu proprietatea c\u{a}
+\bce
+(*) \quad pentru orice $m\in\N$, $\Gamma$ are un model finit de cardinal  $\geq m$.
+\ece
+Not\u am cu $\cM$ clasa modelelor finite ale lui $\Gamma$. Demonstra\c ti c\u a $\cM$ nu este axiomatizabil\u{a}.
+
+\solution{Presupunem prin reducere la absurd c\u{a} $\cM$ este axiomatizabil\u{a}. A\c sadar, exist\u{a} $\Delta\se Sen_\lc$  \ai 
+\bce
+(**) \quad pentru orice $\lc$-structur\u{a} $\cA$, \, $\cA\models \Delta$ \ddacam $\cA\in \cM$.
+\ece
+Fie 
+$$\Sigma:=\Gamma\cup \Delta \cup \{\exists^{\geq n}\mid n\geq 1\}.$$
+
+Demonstr\u{a}m c\u{a} $\Sigma$ este satisfiabil\u{a} folosind Teorema de compacitate. 
+
+Fie $\Sigma_0$ o submul\c{t}ime finit\u{a} a lui $\Sigma$. Atunci $$\Sigma_0\se \Gamma \cup \Delta \cup \{\exists^{\geq n_1},
+\ldots, \exists^{\geq n_k}\} \quad \text{pentru un } k\in\N. $$
+
+Fie $m:=\max\{n_1,\ldots, n_k\}$. Conform (*), $\Gamma$ are un model finit $\cA$ \ai $|A|\geq m$.  Deoarece $\cA\in \cM$, avem conform (**), c\u a  $\cA\models  \Delta$. 
+De asemenea, $\cA\models \exists^{\geq n_i}$ pentru orice $i=1,\ldots, k$. 
+Prin urmare, $\cA\models \Gamma \cup \Delta \cup  \{\exists^{\geq n_1},
+\ldots, \exists^{\geq n_k}\}$, de unde rezult\u a c\u a $\cA\models \Sigma_0$. A\c sadar, $\Sigma_0$ este satisfiabil\u a.
+
+
+Aplic\^{a}nd Teorema de compacitate, rezult\u{a} c\u{a}   $\Sigma$ are un model $\cB$. 
+
+Deoarece $\cB\models \Delta$, avem, conform (**), c\u a $\cB\in \cM$. \^In particular,   $\cB$ este finit\u{a}. 
+
+Deoarece $\cB\models \{\exists^{\geq n}\mid n\geq 1\}$,  rezult\u{a} c\u{a} $\cB$ este infinit\u{a}.
+ 
+ Am ob\c{t}inut o contradic\c{t}ie. 
+}
+
+
+
+
+\section*{Partea II. Probleme de laborator cu rezolvare clasic\u{a}}
+\probex[1 punct]
+    Defini\c{t}i un predicat \texttt{expand\_intervals/2} care, pentru o list\u{a} de perechi de numere 
+    naturale, calculeaz\u{a} lista R format\u{a} \^{i}n felul urm\u{a}tor:
+    Pentru orice \texttt{i} mai mic dec\^{a}t lungimea lui \texttt{L},
+    dac\u{a} \texttt{(N, M)} este perechea de pe pozi\c{t}ia \texttt{i} din \texttt{L},
+    atunci pe pozi\c{t}ia \texttt{i} din \texttt{R},
+    se va afla lista tuturor numerelor mai mari sau egale ca \texttt{N} \c{s}i mai mici sau egale 
+    cu \texttt{M}.
+
+    \textbf{Exemplu:}
+\begin{verbatim}
+?- expand_intervals([(1, 3), [5, 5], [5, 3] [2, 6]], R).
+R = [[1, 2, 3], [5], [], [2, 3, 4, 5, 6]]. 
+\end{verbatim}
+% \textbf{Rezolvare: }
+% \begin{verbatim}
+% expand(N, M, []) :- N > M.
+% expand(N, M, [N|Rest]) :-
+%     N =< M,
+%     N1 is N + 1,
+%     expand(N1, M, Rest).
+
+% expand_intervals([], []).
+% expand_intervals([(N,M)|T], [L|Rest]) :-
+%     expand(N, M, L),
+%     expand_intervals(T, Rest).
+% \end{verbatim}
+
+
+\probex[1 punct]
+Consider\u{a}m \^{i}n continuare reprezentarea formulelor logicii propozi\c{t}ionale folosit\u{a} 
+    \^{i}n laboratorul 5.
+   Scrie\c{t}i un predicat \texttt{assoc\_and} care, 
+    primind ca argument dou\u{a} formule \texttt{Phi}, \texttt{Psi}, 
+    este adev\u{a}rat 
+    daca \c{s}i numai dac\u{a} 
+    \texttt{Phi} \c{s}i \texttt{Psi} sunt formate doar din conjunc\c{t}ii \c{s}i variabile
+    \c{s}i, \^{i}n plus,
+    \texttt{Psi} se poate ob\c{t}ine din \texttt{Phi}
+    prin reasocierea parantezelor din ea (dar p\u{a}str\^{a}nd ordinea \^{i}n care apar variabilele \^{i}n conjunc\c{t}ii). 
+
+    \textbf{Exemplu:}
+\begin{verbatim}
+?- assoc_and(si(si(a, b), c), si(a, si(b, c))). 
+true 
+?- assoc_and(si(si(a, b), si(c, d)), si(a, si(b, si(c, d)))).
+true 
+?- assoc_and(si(a, b), si(b, a)).
+false 
+?- assoc_and(a, a).
+true 
+?- assoc_and(sau(a, sau(b, c)), sau(sau(a, b), c)).
+false 
+\end{verbatim}
+% \textbf{Rezolvare:}
+% \begin{verbatim}
+% flatten_and(si(A, B), Vars) :-
+%     flatten_and(A, VA),
+%     flatten_and(B, VB),
+%     append(VA, VB, Vars).
+
+% flatten_and(X, [X]) :- atom(X).
+
+% assoc_and(Phi, Psi) :-
+%     flatten_and(Phi, Vars1),
+%     flatten_and(Psi, Vars2),
+%     Vars1 = Vars2.
+% \end{verbatim}
+
+\probex[1 punct]
+Definiți un predicat \texttt{dropN/3}, astfel încât, pentru orice liste \texttt{L}, \texttt{R} și număr natural \texttt{N},
+\texttt{dropN(L, R, N)} este adevărat dacă și numai dacă \texttt{R} este lista care rezultă din eliminarea ultimelor
+\texttt{N} elemente ale lui \texttt{L}. Predicatul va fi fals în cazul în care \texttt{N} este mai mare decât lungimea lui \texttt{L}.
+
+\textbf{Exemplu:}
+\begin{verbatim}
+?- dropN([a, b, c, b], R, 2).
+R = [a, b]
+?- dropN([a, b, c], R, 5).
+false.
+\end{verbatim}
+
+% \textbf{Rezolvare:}
+% \begin{verbatim}
+% dropN(L, R, N) :- append(R, L1, L), length(L1, N).
+% \end{verbatim}
+
+
+\section*{Partea III. Probleme de tip gril\u a}
+
+
+\probex[0,5 puncte; 1 r\u{a}spuns corect] Fie urm\u{a}toarea mul\c{t}ime de formule 
+\begin{align*}
+\Gamma = \{ (v_i \to v_{i + 1}) \wedge (v_{i + 1} \to v_i) \mid i \geq 1 \}. 
+\end{align*}
+Care dintre urm\u{a}toarele afirma\c{t}ii este adev\u{a}rat\u{a}? 
+
+$\Box$ A: $\Gamma$ are exact 2 modele. 
+
+$\boxtimes$ B: $\Gamma$ are exact 4 modele. 
+
+$\Box$ C: $Mod(\Gamma \cup \{v_1\}) \subseteq Mod(\Gamma \cup \{v_0\})$.
+
+$\Box$ D: $\Gamma$ are o infinitate de modele. 
+
+$\Box$ E : $\Gamma \cup \{ \neg v_1 \to v_2 \}$ este nesatisfiabil\u{a}.
+
+\solutiong{
+    Observ\u{a}m c\u{a} pentru orice evaluare $e$, avem c\u{a} 
+    \begin{align*}
+        &\iff e \in Mod(\Gamma) \\ 
+        &\iff \text{ pentru orice $i \geq 1$, } e^+(v_i \leftrightarrow v_{i + 1}) = 1 \\
+        &\iff \text{ pentru orice $i \geq 1$, } e(v_i) = e(v_{i + 1}) \\
+        &\iff \text{ pentru orice } i \geq 1, e(v_i) = 0 \text{ sau pentru orice } i \geq 1, e(v_i) = 1
+    \end{align*}
+    A\c{s}adar, modelele lui $\Gamma$ sunt exact evalu\u{a}rile $e_0, e_1, e_2, e_3 : V \to \{0, 1\}$ 
+    definite prin
+    \begin{align*}
+        \text{pentru orice $i \in \N$},\ e_0(v_i) = 0 \\ 
+        \text{pentru orice $i \in \N$},\ e_1(v_i) = 1 \\ 
+        e_2(v_0) = 0 \ \text{\c{s}i pentru orice $i \geq 1$},\ e_2(v_i) = 1 \\ 
+        e_3(v_0) = 1 \ \text{\c{s}i pentru orice $i \geq 1$},\ e_3(v_i) = 0.
+    \end{align*}
+    Deci B este adev\u{a}rat\u{a}, iar A, D sunt false. \\ 
+    C: Avem c\u{a} $e_2$ definit mai sus este model pentru $\Gamma \cup \{v_1\}$,
+    dar nu \c{s}i pentru $\Gamma \cup \{v_0\}$. \\
+    E: $e_1$ este model pentru $\Gamma \cup \{ \neg v_1 \to v_2 \}$.
+}
+ 
+\probex[0,5 puncte; 1 r\u{a}spuns corect] Pentru orice mul\c{t}ime de formule propozi\c{t}ionale $\Gamma \subseteq Form$,  
+definim $\overline{\Gamma} = \{\neg \varphi \mid \varphi \in \Gamma\}$. 
+Care dintre urm\u{a}toarele afirma\c{t}ii este adev\u{a}rat\u{a} pentru orice $\Gamma \subseteq Form$ nevid\u{a}?
+
+$\Box$ A: Pentru orice evaluare $e$, avem c\u{a} $e \in Mod(\overline{\Gamma})$ \ddaca $e \notin Mod(\Gamma)$.
+
+$\Box$ B: Dac\u{a} $\Gamma$ este nesatisfiabil\u{a}, atunci $\overline{\Gamma}$ este satisfiabil\u{a}.
+
+$\Box$ C: $Mod(\Gamma) \neq Mod(\overline{\Gamma})$.
+
+$\Box$ D: $\Gamma \cap \overline{\Gamma}$ este nesatisfiabil\u{a}.
+
+$\boxtimes$ E: $\Gamma \cup \overline{\Gamma}$ este nesatisfiabil\u{a}.
+
+\solutiong{
+    Contraexemplul $\Gamma = \{v_0, \neg v_0\}$ arat\u{a} c\u{a} A, B, C, D sunt false. \\ 
+    E: Presupunem c\u{a} exist\u{a} $e \in Mod(\Gamma \cup \overline{\Gamma})$. 
+    Deoarece $\Gamma$ este nevid\u{a}, putem alege $\varphi \in \Gamma$. 
+    Vom avea c\u{a} $\neg \varphi \in \overline{\Gamma}$, 
+    de unde ob\c{t}inem c\u{a} $e^+(\varphi) = e^+(\neg \varphi) = 1$, 
+    ceea ce este o contradic\c{t}ie.
+}
+
+\probex [0,5 puncte; 2 r\u{a}spunsuri corecte]
+Fie urm\u{a}toarea formul\u{a} propozi\c{t}ional\u{a}: 
+\begin{align*}
+\varphi = (v_0 \wedge v_1 \wedge v_2 \wedge v_3) \to v_4. 
+\end{align*}
+Care dintre urm\u{a}toarele afirma\c{t}ii sunt adev\u{a}rate? 
+
+$\boxtimes$ A: $\varphi \sim v_0 \to (v_1 \to (v_2 \to (v_3 \to v_4)))$.
+
+$\Box$ B: $\varphi \sim (((v_0 \to v_1) \to v_2) \to v_3) \to v_4$.
+
+% $\Box$ $v_1 \to v_4 \models \varphi$
+
+$\Box$ C: $\varphi \models v_1 \to v_4$.
+
+$\Box$ D: $\varphi \models (v_0 \vee v_1 \vee v_2 \vee v_3) \to v_4$ .
+
+% $\Box$ $(v_0 \vee v_1 \vee v_2 \vee v_3) \to v_4 \models \varphi$
+
+$\boxtimes$ E: $\neg v_0 \vee \neg v_1 \vee \neg v_2 \vee \neg v_3 \vee v_4$ este FND \c{s}i FNC pentru $\varphi$.
+
+\solutiong{
+    A: se aplic\u{a} succesiv echivalen\c{t}a $\varphi \wedge \psi \to \chi \ \sim \ \varphi \to (\psi \to \chi)$. \\ 
+    E: Avem 
+    \begin{align*}
+        &(v_0 \wedge v_1 \wedge v_2 \wedge v_3) \to v_4 \quad\sim\\ 
+        &\neg(v_0 \wedge v_1 \wedge v_2 \wedge v_3) \vee v_4 \quad\sim \\ 
+        &\neg v_0 \vee \neg v_1 \vee \neg v_2 \vee \neg v_3 \vee v_4,
+    \end{align*}
+    unde ultima formul\u{a} este at\^{a}t \^{i}n FND, c\^{a}t \c{s}i \^{i}n FNC.
+
+    Fie $e$ o evaluare cu $e(v_1) = 1$ \c{s}i $e(v_0) = e(v_2) = e(v_3) = e(v_4) = 0$.
+    Avem \\ 
+    B: $e \models \varphi$, dar $e \not{\models} (((v_0 \to v_1) \to v_2) \to v_3) \to v_4$ \\ 
+    C: $e \models \varphi$, dar $e \not{\models} v_1 \to v_4$ \\
+    D: $e \models \varphi$, dar $e \not{\models} (v_0 \vee v_1 \vee v_2 \vee v_3) \to v_4$
+    
+}
+
+\probex 
+[0,5 puncte; 2 r\u{a}spunsuri corecte]
+Fie $\mathcal{L}$ un limbaj de ordinul \^{i}nt\^{a}i care con\c{t}ine exact un simbol de func\c{t}ie de aritate 2,
+notat $\dot{\times}$. 
+Consider\u{a}m urm\u{a}toarea formul\u{a} a lui $\mathcal{L}$
+\begin{align*}
+\varphi = \forall x \forall y (x = y \dot{\times} y \to \forall z (x = z \dot{\times} z \to y = z)),
+\end{align*} 
+unde $x, y$ \c{s}i $z$ sunt variabile distincte dou\u{a} c\^{a}te dou\u{a}.
+Care dintre urm\u{a}toarele afirma\c{t}ii sunt adev\u{a}rate? 
+
+$\boxtimes$ A: $(\N, \cdot) \models \varphi$. 
+
+$\Box$ B: $(\Q, \cdot) \models \varphi$.
+
+$\boxtimes$ C: $\varphi \vDashv \forall x \forall y \forall z (x = y \dot{\times} y \to (x = z \dot{\times} z \to y = z))$.
+
+$\Box$ D: $\varphi \vDashv \forall x \forall y \exists z (x = y \dot{\times} y \to (x = z \dot{\times} z \to y = z))$.
+
+$\Box$ E: $\varphi \vDashv \forall x (\exists y (x = y \dot{\times} y) \to \forall z (x = z \dot{\times} z \to y = z))$.
+
+\solutiong{
+    Observ\u{a}m c\u{a} $\varphi$ este satisf\u{a}cut \^{i}n 
+    $(\N, \cdot)$ (sau $(\Q, \cdot)$) dac\u{a} \c{s}i numai dac\u{a} 
+    pentru orice num\u{a}r din $\N$ (resp. din $\Q$), dac\u{a} acesta are o 
+    `r\u{a}d\u{a}cin\u{a} p\u{a}trat\u{a}', aceasta este unic\u{a}.  
+    Afirma\c{t}ia este adev\u{a}rat\u{a} \^{i}n $\N$, dar nu \c{s}i \^{i}n 
+    $\Q$ (e.g. $1 \cdot 1 = (-1) \cdot (-1) = 1$).
+    Formula de la C este o form\u{a} normal\u{a} prenex pentru $\varphi$.
+}
+
+\probex [0,5 puncte; 2 r\u{a}spunsuri corecte]
+Fie $\mathcal{L}$ un limbaj de ordinul \^{i}nt\^{a}i con\c{t}in\^{a}nd 
+un simbol de rela\c{t}ie binar\u{a} $P$ \c{s}i un simbol de rela\c{t}ie unar\u{a} 
+$Q$.
+Fie urm\u{a}toarea formul\u{a} a lui $\mathcal{L}$
+\begin{align*}
+\varphi = \forall x \exists y \forall u \exists z 
+(P(x, y) \to (P(u, u) \to \neg Q(z))), 
+\end{align*}
+unde $x, y, u$ \c{s}i $z$ sunt variable distincte dou\u{a} c\^{a}te dou\u{a}.
+Care dintre urm\u{a}toarele afirma\c{t}ii sunt adev\u{a}rate? 
+
+$\boxtimes$ A: $\varphi$ este o form\u{a} normal\u{a} prenex pentru formula 
+\begin{align*}
+\exists x \forall y P(x, y) \to (\neg \forall x \neg P(x, x) \to \neg \forall z Q(z)).
+\end{align*}
+
+$\boxtimes$ B: $\forall x \forall u (P(x, g(x)) \to (P(u, u) \to \neg Q(h(x, u))))$ este o form\u{a} normal\u{a} Skolem pentru $\varphi$,
+unde $g$ \c{s}i $h$ sunt simboluri noi de func\c{t}ie de aritate $1$, respectiv $2$.
+
+$\Box$ C: $\varphi$ este o form\u{a} normal\u{a} prenex pentru formula 
+\begin{align*}
+\exists x \forall y P(x, y) \to (\exists x P(x, x) \to \forall z Q(z)).
+\end{align*}
+
+$\Box$ D: $\forall x \forall u (P(x, g(x, u)) \to (P(u, u) \to \neg Q(h(x, u))))$ este o form\u{a} normal\u{a} Skolem pentru $\varphi$,
+unde $g$ \c{s}i $h$ sunt simboluri noi de func\c{t}ie de aritate $2$. 
+
+$\Box$ E: $\varphi$ este at\^{a}t \^{i}n form\u{a} normal\u{a} prenex, c\^{a}t \c{s}i \^{i}n form\u{a} normal\u{a} Skolem.
+
+\solutiong{
+Varianta A este corect\u{a} pentru forma prenex: 
+\begin{align*}
+    \exists x \forall y P(x, y) \to (\neg \forall x \neg P(x, x) \to \neg \forall z Q(z)) \vDashv \\ 
+    \exists x \forall y P(x, y) \to (\exists x P(x, x) \to \exists z \neg Q(z)) \vDashv \\ 
+    \exists x \forall y P(x, y) \to (\exists u P(u, u) \to \exists z \neg Q(z)) \vDashv \\ 
+    \exists x \forall y P(x, y) \to \forall u \exists z (P(u, u) \to \neg Q(z)) \vDashv \\ 
+    \forall x \exists y (P(x, y) \to \forall u \exists z (P(u, u) \to \neg Q(z))) \vDashv \\ 
+    \forall x \exists y \forall u \exists z (P(x, y) \to (P(u, u) \to \neg Q(z))) \\ 
+\end{align*}
+}
+
+\probex [0,5 puncte; 1 r\u{a}spuns corect] Consider\u{a}m urm\u atoarea mul\c time de clauze:
+\begin{align*}
+    \mathcal{S} = \{ \{v_0, v_1, \neg v_2\}, \{v_0, \neg v_1, v_2\}, \{\neg v_0, v_1, v_2\}, \{\neg v_0, \neg v_2\} \}
+\end{align*}
+Care dintre urm\u{a}toarele afirma\c{t}ii este adev\u{a}rat\u{a}?
+
+$\boxtimes$ A: $\mathcal{S}$ este satisfiabil\u{a}. 
+
+$\Box$ B: $\mathcal{S}$ este nesatisfiabil\u{a}. 
+
+$\Box$ C: $\{v_1\}$ este rezolvent al dou\u{a} clauze din $\mathcal{S}$. 
+
+$\Box$ D: $\{v_0\}$ este rezolvent al dou\u{a} clauze din $\mathcal{S}$. 
+
+
+$\Box$ E: Rul\^{a}nd algoritmul Davis-Putnam pe mul\c{t}imea $\mathcal{S}$,
+vom ob\c{t}ine $\square \in \mathcal{S}_{N + 1}$,
+unde $N$ este num\u{a}rul de pa\c{s}i dup\u{a} care algoritmul se termin\u{a}. 
+
+
+\solutiong{
+    Se observ\u{a} c\u{a} o evaluare $e$ cu 
+    $e(v_0) = e(v_1) = 1$ \c{s}i $e(v_2) = 0$ satisface $\mathcal{S}$. 
+    Rezult\u{a} c\u{a} A este adev\u{a}rat\u{a} \c{s}i B, E sunt false.
+    Se observ\u{a} c\u{a} $\{v_0\}$ \c{s}i $\{v_1\}$ nu se pot ob\c{t}ine ca rezolven\c{t}i din dou\u{a} clauze din $\mathcal{S}$.
+}
+
+
+\probex [0,5 puncte; 1 r\u{a}spuns corect]
+Consider\u{a}m urm\u{a}torul program Prolog.
+\begin{verbatim}
+p(Xs, [0|Rest]) :-
+    p1(Xs, 0, 1, Rest).
+
+p1([], _, _, []).
+p1([X|Xs], S, P, [P2|Rest]) :-
+    S2 is S + X,
+    P2 is P * X,
+    p2(Xs, S2, P2, Rest). 
+
+p2([], _, _, []).
+p2([X|Xs], S, P, [S2|Rest]) :-
+    S2 is S + X,
+    P2 is P * X,
+    p1(Xs, S2, P2, Rest). 
+\end{verbatim}
+Care dintre urm\u{a}toarele afirma\c{t}ii este adev\u{a}rat\u{a}? \\ 
+$\Box$ R\u{a}spunsul interogarii \texttt{?- p([2, 2, 2, 2, 2, 2], R)}. este \texttt{R = [0, 2, 4, 8, 16, 32]}.
+
+$\Box$ R\u{a}spunsul interogarii \texttt{?- p([1, 1, 1, 1]).} este \texttt{R = [0, 1, 2, 3]}
+
+$\Box$ R\u{a}spunsul interogarii \texttt{?- p([], []).} este \texttt{true}.
+
+$\Box$ R\u{a}spunsul interogarii \texttt{?- p([], R).} este \texttt{false}. 
+
+$\boxtimes$ R\u{a}spunsul interogarii \texttt{?- p([2, 2, 2, 2, 2, 2], R).} este \texttt{R = [0, 2, 4, 8, 8, 32, 12]}
+
+\probex [0,5 puncte; 2 r\u{a}spunsuri corecte]
+
+Consider\u{a}m urm\u{a}torul program Prolog: 
+\begin{verbatim}
+p([], []).
+
+p([_|T], S) :- p(T, S).
+
+p([X|T], [X|S]) :- p_from(T, X, S).
+
+p_from([], _, []).
+
+p_from([_|T], Last, S) :- p_from(T, Last, S).
+
+p_from([X|T], Last, [X|S]) :- X > Last, p_from(T, X, S).
+\end{verbatim}
+Care dintre urm\u{a}toarele afirma\c{t}ii sunt adev\u{a}rate? \\ 
+$\boxtimes$ R\u{a}spunsul interogarii \texttt{p([4,6,8,3,4,78,5,2,6], [3, 4, 5, 6])} este \texttt{true}.
+
+$\Box$ R\u{a}spunsul interogarii \texttt{p([4,6,8,3,4,78,5,2,6], [4, 3])} este \texttt{true}.
+
+$\Box$ Pentru orice list\u{a} \texttt{L}, exist\u{a} o singur\u{a} valoare posibil\u{a} pentru \texttt{R} 
+astfel \^{i}nc\^{a}t interogarea \texttt{?- p(L, R)} s\u{a} aib\u{a} r\u{a}spunsul \texttt{true}. 
+
+$\boxtimes$ R\u{a}spunsul interogarii \texttt{p([6, 5, 4, 3, 2, 1], [])} este \texttt{true}. 
+
+$\Box$ Nu exist\u{a} nicio valoare pentru \texttt{R} astfel \^{i}nc\^{a}t 
+r\u{a}spunsul interog\u{a}rii \texttt{p([6, 5, 4, 3, 2, 1], R)} s\u{a} fie \texttt{true}
+
+
+\end{document}
