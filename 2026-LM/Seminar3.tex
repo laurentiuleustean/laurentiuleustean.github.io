@@ -1,0 +1,168 @@
+\documentclass[12pt]{article}
+
+
+\usepackage{macros}
+\usepackage{macros-gen-ro}
+\usepackage{macros-curs-ro}
+\usepackage{macros-math}
+\usepackage{macros-logic}
+
+
+\begin{document}
+
+
+\renewcommand{\seminarno}{3}
+\setcounter{exercitiuno}{0}
+
+\titluseminarLM
+
+
+\renewcommand{\solution}[1]{}
+
+\parindent0pt
+
+
+\semex
+Demonstra\c ti c\u a dac\u a  $\alpha$ \c si $\beta$ sunt cardinale cu $\alpha$ infinit \c si $\beta\leq \alpha$, atunci 
+$\alpha+\beta=\alpha$. \\
+\solution{
+Ob\c tinem
+$$
+\ba{llll}
+\alpha &=& \alpha+\mathbf{0} & \text{din Propozi\c tia~2.20.(i)}\\
+&\leq  & \alpha+\beta & \text{din Propozi\c tia~2.20.(iii), deoarece, conform Propozi\c tiei~2.8.(iv), ~}\mathbf{0} \leq \beta\\
+&\leq  & \alpha+\alpha & \text{din Propozi\c tia~2.20.(iii), deoarece, din ipotez\u a,~}\beta\leq \alpha\\
+&=& \alpha  & \text{din Propozi\c tia~2.21, deoarece, din ipotez\u a,~} \alpha \text{~este infinit}.   \hfill \qed
+\ea
+$$
+}
+
+
+\semex
+Demonstra\c ti urm\u atoarele propriet\u a\c ti ale produsului cardinalelor.
+\be
+\item $\mathbf{0}\cdot\alpha = \alpha\cdot\mathbf{0}=\mathbf{0}$ pentru orice cardinal $\alpha$.
+\item\label{1-el-neutru-cdot} $\mathbf{1}$ este element neutru al lui $\cdot$.
+\item \label{beta-leq-gamma-alpha-cdot} Pentru orice cardinale $\alpha$, $\beta$, $\gamma$,
+\bua
+\beta\leq \gamma \text{~implic\u a~} \alpha\cdot\beta\leq \alpha\cdot\gamma. 
+\eua 
+\item\label{alpha-leq-alpha-beta} Pentru orice cardinale $\alpha$, $\beta$ \ai $\beta\ne\mathbf{0}$, $\alpha\leq \alpha\cdot \beta$.
+\item Opera\c tia $\cdot$ este comutativ\u a, asociativ\u a \c si distributiv\u a fa\c t\u a de $+$.
+\ee
+\solution{
+Fie $\alpha=|A|$, $\beta =|B|$ \c si $\gamma=|C|$.
+\be
+\item Avem c\u a $\mathbf{0}\cdot\alpha=|\emptyset \times A|=|\emptyset|=\mathbf{0}$ \c si 
+$\alpha\cdot\mathbf{0}=|A\times\emptyset|=|\emptyset|=\mathbf{0}$.
+\item Deoarece, conform (i),  $\mathbf{1}\cdot \mathbf{0}= \mathbf{0}\cdot \mathbf{1}=\mathbf{0}$, putem prespune c\u a
+$\alpha\ne\mathbf{0}$, deci c\u a $A$ este nevid\u a.
+Atunci func\c tiile 
+\bce 
+$f:A\to A\times \{0\}, \, f(a)=(a,0)$ \c si $g:A\to  \{0\}\times A, \, g(a)=(0,a)$ 
+\ece
+sunt bijec\c tii, deci  $A\sim A\times \{0\}\sim  \{0\}\times A$. Ob\c tinem 
+\[\alpha\cdot\mathbf{1}=|A\times \{0\}| = |A|=\alpha \text{~\c si~} 
+\mathbf{1}\cdot\alpha=|\{0\}\times A|=|A|=\alpha.\]
+\item Dac\u a $\alpha=\mathbf{0}$ sau $\beta=\mathbf{0}$, atunci $\alpha\cdot\beta\stackrel{(i)}{=}\mathbf{0} \leq \alpha\cdot\gamma$. 
+Dac\u a $\gamma=\mathbf{0}$, atunci trebuie s\u a avem $\beta=\mathbf{0}$, deci, din (i),
+$\alpha\cdot\beta =\mathbf{0}=\alpha\cdot\gamma$. 
+Presupunem c\u a $\alpha$, $\beta$, $\gamma$ sunt nenuli, deci c\u a
+mul\c timile $A$, $B$, $C$ sunt nevide. 
+Deoarece $ \beta\leq \gamma$, exist\u a o func\c tie injectiv\u a $f:B\to C$. 
+Definim 
+$$g:A\times B\to A\times C, \quad g(a,b)=(a,f(b)).$$ 
+Se observ\u a u\c sor c\u a $g$ este injectiv\u a.
+Prin urmare, 
+\[\alpha\cdot\beta =|A\times B|\leq |A\times C|=\alpha\cdot\gamma.\]
+\item Deoarece $\beta\ne\mathbf{0}$, avem, conform Propozi\c tiei~2.8.(v), c\u a $\mathbf{1}\leq \beta$.
+Ob\c tinem  
+$$\alpha\stackrel{(ii)}{=}\alpha\cdot \mathbf{1} \stackrel{(iii)}{\leq} \alpha\cdot\beta.$$
+\item Dac\u a $A$ sau $B$ este vid\u a, atunci $\alpha=\mathbf{0}$ sau $\beta=\mathbf{0}$, deci 
+$\alpha\cdot\beta=\beta\cdot\alpha=\mathbf{0}$. 
+Presupunem c\u a $A$ \c si $B$ sunt nevide. Definim $f:A\times B \to B\times A, \, f(a,b)=(b,a)$.
+Atunci $f$ este bijec\c tie, prin urmare
+\[ \alpha\cdot\beta=|A\times B|=|B\times A|=\beta\cdot\alpha.\]
+Avem c\u a 
+\[(\alpha\cdot\beta)\cdot\gamma=|A\times B|\cdot \gamma =|(A\times B)\times C|=
+|A\times (B\times C)|=\alpha\cdot |B\times C|=\alpha\cdot(\beta\cdot\gamma).\]
+Presupunem c\u a $B$ \c si $C$ sunt disjuncte. Ob\c tinem c\u a
+\bua
+\alpha\cdot(\beta+\gamma) &=& \alpha \cdot |B\cup C|=|A\times(B\cup C)|=|(A\times B)\cup (A\times C)|=
+|A\times B|+|A\times C|\\
+&=& \alpha\cdot \beta+\alpha\cdot\gamma.  \hfill \qed
+\eua
+\ee
+}
+
+
+\semex
+Fie $A$ o mul\c time infinit\u a. Demonstra\c ti c\u a $\left|\bigcup_{n\in\N^*}A^n\right|=|A|$.
+
+\solution{
+Deoarece $A=A^1\se  \bigcup_{n\in\N^*}A^n$, avem c\u a 
+\[|A|\leq \left|\bigcup_{n\in\N^*}A^n\right|.\] 
+Conform Propozi\c tiei~2.28, avem c\u a $|A^n|=|A|^n=|A|$ pentru orice $n\in\N^*$. 
+Rezult\u a c\u a
+$$
+\ba{llll}
+\left|\bigcup_{n\in\N^*}A^n\right| & \leq &  |A|\cdot |\N^*|  & \text{din Propozi\c tia~2.38} \\
+&  =  & |A|\cdot \aleph_0 & \text{din Propozi\c tia~2.16}\\
+&=  &  \max\{|A|,\aleph_0\}   & \text{din Propozi\c tia~2.29}\\
+&=  & |A|  & \text{din Propozi\c tia~2.14}.
+\ea
+$$
+Aplic\u am 
+Teorema Cantor-Schr\"oder-Bernstein pentru a ob\c tine c\u a $|\bigcup_{n\in\N^*}A^n|=|A|$.  \hfill \qed
+}
+
+
+\semex
+Fie $\alpha$, $\beta$, $\gamma$ cardinale arbitrare.  Demonstra\c ti urm\u atoarele:
+\be 
+\item\label{exp-basic-prop-1} 
+$\alpha^{\beta+\gamma}=\alpha^\beta\cdot \alpha^\gamma$, \,\, 
+$(\alpha\cdot \beta)^\gamma=\alpha^\gamma\cdot \beta^\gamma$ \, \, 
+\c si \, \, $(\alpha^\beta)^\gamma =\alpha^{\beta\cdot\gamma}$.
+\item\label{leq-comp-exp} Dac\u a $\alpha\leq \beta$, atunci $\alpha^\gamma\leq \beta^\gamma$.
+\ee
+\solution{
+\be
+\item Fie $\alpha=|A|$, $\beta =|B|$ \c si $\gamma=|C|$ cu $B\cap C=\emptyset$. 
+Aplic\u am  Lema~2.34 pentru a ob\c tine
+\bua
+\alpha^{\beta+\gamma}&=& |Fun(B\cup C, A)|=|Fun(B,A)\times Fun(C,A)| \\
+&=& |Fun(B,A)|\cdot |Fun(C,A)| =  \alpha^\beta\cdot \alpha^\gamma,\\
+(\alpha\cdot \beta)^\gamma &=& |Fun(C, A\times B)|=|Fun(C, A)\times Fun(C,B)| \\
+&=&|Fun(C, A)|\cdot |Fun(C,B)|  =  \alpha^\gamma\cdot \beta^\gamma, \\
+(\alpha^\beta)^\gamma &=& |Fun(C, Fun(B,A))|=|Fun(C\times B,A)|=\alpha^{|C\times B|}=\alpha^{\gamma\cdot\beta}= \alpha^{\beta\cdot\gamma} \\
+&&   \text{~deoarece~} \cdot \text{~este comutativ\u a}. 
+\eua
+\item Deoarece $\alpha\leq \beta$, exist\u a o injec\c tie $f:A\to B$. 
+Definim func\c tia
+\[\Phi:Fun(C,A)\to Fun(C,B), \quad \Phi(h)=f\circ h.\]
+Demonstr\u am c\u a $\Phi$ este injectiv\u a. Fie $h_1,h_2:C\to A$. Atunci $\Phi(h_1)=\Phi(h_2)$ \ddacam 
+$f(h_1(c))=f(h_2(c))$ pentru orice $c\in C$ \ddacam $h_1(c)=h_2(c)$ pentru orice $c\in C$ 
+(deoarece $f$ este injectiv\u a) \ddacam $h_1=h_2$. \\
+Rezult\u a c\u a $\alpha^\gamma=|Fun(C,A)|\leq |Fun(C,B)|=\beta^\gamma$.   \hfill \qed
+\ee
+}
+
+
+\semex
+Fie $\alpha$, $\beta$ cardinale astfel \^inc\^at cel pu\c tin unul dintre ele este infinit. Demonstra\c ti c\u a $\alpha+\beta=\max\{\alpha,\beta\}$.
+
+\solution{Presupunem f\u ar\u a a restr\^ange generalitatea c\u a $\alpha$ este infinit. Deoarece $\leq$ este total\u a, avem urm\u atoarele dou\u a cazuri:
+\be
+\item $\beta\leq\alpha$. Atunci $\max\{\alpha,\beta\}=\alpha$ \c si  $\alpha+\beta=\alpha$, conform
+Propozi\c tiei~2.22.
+\item $\alpha \leq \beta$. Atunci $\beta$ este, de asemenea, infinit, $\max\{\alpha,\beta\}=\beta$ \c si  $\alpha+\beta=\beta+\alpha=\beta$, conform
+Propozi\c tiei~2.22.  \hfill \qed
+\ee
+}
+
+
+\end{document}
+
+
+

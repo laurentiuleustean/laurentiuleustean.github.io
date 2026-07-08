@@ -1,0 +1,137 @@
+\documentclass[12pt]{article}
+
+
+\usepackage{macros}
+\usepackage{macros-gen-ro}
+\usepackage{macros-curs-ro}
+\usepackage{macros-math}
+\usepackage{macros-logic}
+
+
+\begin{document}
+
+
+\renewcommand{\seminarno}{7}
+\setcounter{exercitiuno}{0}
+
+\titluseminarLM
+
+
+%\renewcommand{\solution}[1]{}
+
+\parindent0pt
+
+\semex
+Fie $\vp$ un enun\c t al lui $\lc$ cu proprietatea c\u a  pentru orice $m\in\N$ exist\u a o $\lc$-structur\u a 
+finit\u a $\cA$ de cardinal $\geq m$  \ai $\cA\models \neg \vp$. Demonstra\c ti c\u a $\neg \vp$ are un model infinit.
+
+\solution{Aplic\u am Propozi\c tia 4.86 pentru $\Gamma=\{\neg\vp\}$.
+}
+
+\semex
+Fie $\lc$ un limbaj de ordinul \^int\^ai \c si  \c si  $\Gamma$ o mul\c{t}ime de enun\c{t}uri ale lui $\lc$ cu proprietatea c\u{a}
+\bce
+(*) \quad pentru orice $m\in\N$, $\Gamma$ are un model finit de cardinal  $\geq m$.
+\ece
+Not\u am cu $\cM$ clasa modelelor finite ale lui $\Gamma$. Demonstra\c ti c\u a $\cM$ nu este axiomatizabil\u{a}.
+
+\solution{Presupunem prin reducere la absurd c\u{a} $\cM$ este axiomatizabil\u{a}. A\c sadar, exist\u{a} $\Delta\se Sen_\lc$  \ai 
+\bce
+(**) \quad pentru orice $\lc$-structur\u{a} $\cA$, \, $\cA\models \Delta$ \ddacam $\cA\in \cM$.
+\ece
+Fie 
+$$\Sigma:=\Gamma\cup \Delta \cup \{\exists^{\geq n}\mid n\geq 1\}.$$
+
+Demonstr\u{a}m c\u{a} $\Sigma$ este satisfiabil\u{a} folosind Teorema de compacitate. 
+
+Fie $\Sigma_0$ o submul\c{t}ime finit\u{a} a lui $\Sigma$. Atunci $$\Sigma_0\se \Gamma \cup \Delta \cup \{\exists^{\geq n_1},
+\ldots, \exists^{\geq n_k}\} \quad \text{pentru un } k\in\N. $$
+
+Fie $m:=\max\{n_1,\ldots, n_k\}$. Conform (*), $\Gamma$ are un model finit $\cA$ \ai $|A|\geq m$.  Deoarece $\cA\in \cM$, avem conform (**), c\u a  $\cA\models  \Delta$. 
+De asemenea, $\cA\models \exists^{\geq n_i}$ pentru orice $i=1,\ldots, k$. 
+Prin urmare, $\cA\models \Gamma \cup \Delta \cup  \{\exists^{\geq n_1},
+\ldots, \exists^{\geq n_k}\}$, de unde rezult\u a c\u a $\cA\models \Sigma_0$. A\c sadar, $\Sigma_0$ este satisfiabil\u a.
+
+
+Aplic\^{a}nd Teorema de compacitate, rezult\u{a} c\u{a}   $\Sigma$ are un model $\cB$. 
+
+Deoarece $\cB\models \Delta$, avem, conform (**), c\u a $\cB\in \cM$. \^In particular,   $\cB$ este finit\u{a}. 
+
+Deoarece $\cB\models \{\exists^{\geq n}\mid n\geq 1\}$,  rezult\u{a} c\u{a} $\cB$ este infinit\u{a}.
+ 
+ Am ob\c{t}inut o contradic\c{t}ie. 
+}
+
+
+\semex
+Fie $\cK$ o clas\u{a} de $\lc$-structuri \c{s}i $\cK^c$ complementul s\u{a}u \^{\i}n clasa tuturor $\lc$-structurilor. 
+Dac\u{a} at\^{a}t $\cK$ c\^{a}t \c{s}i $\cK^c$ sunt axiomatizabile, atunci am\^{a}ndou\u{a} sunt finit axiomatizabile.
+
+\solution{Fie $\Gamma, \Delta\se Sen_\lc$ \ai $\cK=Mod(\Gamma)$ \c si $\cK^c=Mod(\Delta)$. 
+Presupunem prin reducere la absurd c\u{a} $\cK$ nu este finit axiomatizabil\u{a}. Demonstr\u{a}m folosind Teorema de compacitate c\u{a} 
+$\Gamma\cup\Delta$ este satisfiabil\u{a}. Fie $\Sigma\se \Gamma\cup\Delta$ finit\u{a}. Atunci $\Sigma\se \Gamma_0\cup\Delta$, 
+unde $\Gamma_0\se \Gamma$ este finit\u{a}.
+Deoarece $\cK=Mod(\Gamma)\se Mod(\Gamma_0)$ \c{s}i $\cK\ne Mod(\Gamma_0)$, exist\u{a} $\cA$ \ai $\cA\models \Gamma_0$ \c{s}i $\cA\in \cK^c$. Prin urmare, cum $\cA \in \cK^c$, $\cA \models \Delta$, deci $\cA \models \Gamma_0\cup\Delta$ \c si \^in particular
+$\cA\models \Sigma$. 
+
+Aplic\^{a}nd Teorema de compacitate, rezult\u{a} c\u{a} $\Gamma\cup\Delta$  are un model $\cB$. Ar rezulta atunci c\u{a}
+$\cB\in \cK\cap \cK^c=\emptyset$, contradic\c{t}ie.
+
+Demonstr\u{a}m analog c\u{a} $\cK^c$ este finit axiomatizabil\u{a}.
+}
+
+
+\semex
+Decide\c{t}i dac\u{a} urm\u{a}toarele afirma\c{t}ii sunt adev\u{a}rate sau false:
+\be
+\item $(\N, \leq, +,0) \hookrightarrow_0 (\N, \leq, \cdot, 1)$;
+\item $(\N, \leq, \cdot, 1)  \hookrightarrow_0 (\N, \leq, +,0)$;
+\item $(\N\setminus\{0\}, \leq, \cdot, 1)  \hookrightarrow_0 (\N, \leq, +,0)$;
+\item $(\N\setminus\{0\}, \cdot)  \hookrightarrow_0 (\N, +)$.
+\ee
+\solution{
+\be
+\item Este adev\u{a}rat\u{a}. O scufundare este $h:\N\to \N, \quad h(n)=2^n$. Se observ\u{a} c\u{a} $h$ este strict cresc\u{a}toare, $h(0)=1$ \c{s}i
+$h(n+m)=2^{n+m}=2^n\cdot 2^m=h(n)\cdot h(m)$. 
+\item Este fals\u{a}. Dac\u{a} $h:\N\to \N$ este un homomorfism, atunci $h(1)=0$ \c si $h$ este cresc\u atoare. Rezult\u a
+c\u a $h(0)\leq h(1)=0$, deci $h(0)=0$. Prin urmare, $h$ nu este injectiv.
+\item Este fals\u{a}. Presupunem c\u{a} $h$ este o scufundare. Atunci $h(1)=0$, $h(2)>h(1)=0$, deci $h(2)\geq 1$.  
+Prin induc\c{t}ie se demonstreaz\u{a} imediat c\u{a} $h(n+1)\geq n$ pentru orice $n\in \Ns$. Ob\c{t}inem c\u{a} pentru orice $n\geq 1$, $2^n-1\leq h(2^n)=nh(2)$, deci c\u{a} $\ds h(2)\geq \frac{2^n-1}{n}$ pentru orice $n\in \Ns$, ceea ce este o contradic\c{t}ie, deoarece $\ds \lim\limits_{n\to \infty}  \frac{2^n-1}{n}=\infty$.
+\item Este fals\u{a}. Presupunem c\u{a} $h$ este o scufundare. Fie $m:=h(2)$ \c{s}i $n:=h(3)$. Atunci $m\ne n$, 
+\bua
+h(2^n\cdot 3^m)&= & h(2^n)+h(3^m)= nh(2)+ mh(3)=nm+mn=2mn \text{ \c{s}i}\\
+h(3^{2m}) &=& 2mh(3)=2mn.
+\eua
+Pe de alt\u{a} parte, $2^n3^m\ne 3^{2m}$. Deci, $h$ nu e injectiv.
+\ee
+}
+
+
+\semex
+Fie $\cA$, $\cB$ dou\u{a} $\lc$-structuri. Demonstra\c{t}i c\u{a} dac\u{a} 
+$h:\cA\simeq \cB$ este izomorfism, atunci $h^{-1}:\cB\simeq \cA$ este de asemenea izomorfism.
+
+\solution{ 
+Fie $A=|\cA|$, $B=|\cB|$. Evident, $h^{-1}:B\to A$ este  bijec\c{t}ie. Demonstr\u am \iin continuare c\u a $h^{-1}$
+este homorfism.
+\bi
+\item Fie $m\geq 1$,   $R\in{\cal R}_m, f\in\cF_m$ \c{s}i $b_1,\ldots, b_m\in B$, $a_i=h^{-1}(b_i)\in A, i=1,\ldots, m$. Atunci
+\bua
+R^\cB(b_1,\ldots, b_m) & \Ba & R^\cB(h(a_1),\ldots, h(a_m))\\
+& \Ba &  R^\cA(a_1,\ldots, a_m) \quad \text{deoarece }h \text{ este izomorfism}\\
+& \Ba &  R^\cA(h^{-1}(b_1),\ldots, h^{-1}(b_m)). 
+\eua
+\c{s}i 
+\bua
+h^{-1}(f^\cB(b_1,\ldots, b_m))&=& h^{-1}(f^\cB(h(a_1), \ldots, h(a_m))) \\
+&=&  h^{-1}(h(f^\cA(a_1,\ldots, a_m)) \quad \text{deoarece }h \text{ este izomorfism}\\\\
+&= & f^\cA(a_1,\ldots, a_m)=f^\cA(h^{-1}(b_1),\ldots, h^{-1}(b_m)).
+\eua
+\item Fie $c$ simbol de constant\u{a}. Atunci $h^{-1}(c^\cB)=h^{-1}(h(c^\cA))=c^\cA$.
+\ei
+A\c{s}adar, $h^{-1}$ este homomorfism.  rezult\u{a} concluzia. 
+}
+
+
+
+\end{document}

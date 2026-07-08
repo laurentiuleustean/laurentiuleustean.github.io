@@ -1,0 +1,233 @@
+
+
+\documentclass[12pt]{article}
+
+
+\usepackage{macros}
+\usepackage{macros-gen-ro}
+\usepackage{macros-math}
+\usepackage{macros-logic}
+
+\newcommand{\curs}{Logic\u a matematic\u a}
+\newcommand{\departamentan}{ FMI, Mate, Anul I}
+
+
+\newsavebox{\descrierecurs}
+\savebox{\descrierecurs}{\raisebox{-11pt}{\parbox[t]{8cm} {\bf \departamentan \\ \curs}}}
+
+\newcommand{\titlu}{ 
+\usebox{\descrierecurs}  
+%\bigskip
+%\begin{flushright} \datum \end{flushright}
+\vspace{10mm} 
+\begin{center}{\Large \bf 
+Examen}
+ \end{center} \vspace{5mm}
+}
+
+
+\newcounter{exercitiuno}
+\newcommand{\probex}{\stepcounter{exercitiuno}{\vspace{0.3cm}\noindent \bf (P\arabic{exercitiuno}) }}
+
+\parindent0pt
+
+\begin{document}
+
+
+
+\setcounter{exercitiuno}{0}
+
+\titlu
+
+
+%\renewcommand{\solution}[1]{}
+
+
+
+\section{Teoria mul\c timilor}
+
+%prob
+\probex[1 punct] 
+S\u{a} se arate c\u{a} mul\c{t}imea $\R - \Q$ nu este num\u{a}rabil\u{a}.
+
+\solution{Presupunem c\u a $\R - \Q$ este num\u arabil\u a. Deoarece $\Q$ este num\u arabil\u a, rezult\u a c\u a $\R=(\R - \Q)\cup \Q$ este num\u arabil\u a, contradic\c tie.
+}
+
+%prob
+\probex[1,5 puncte] 
+\be
+\item Fie $\alpha$ un cardinal infinit, $\beta$, $\gamma$ cardinale astfel \^inc\^at $\beta\leq \alpha$, $\gamma$ este nenul \c{s}i $\gamma\leq \alpha$. S\u{a} se arate c\u{a}
+$(\alpha+\beta)\cdot \gamma=\alpha$.
+\item Fie $\alpha$ un cardinal finit \c{s}i $\beta$ un cardinal infinit. S\u{a} se arate c\u{a} $\alpha < \beta$.
+\ee
+\solution{
+\be
+\item Avem c\u{a}
+\bua
+(\alpha+\beta)\cdot \gamma & = & \alpha \cdot \gamma   \quad \text{aplic\u am Propozi\c tia~2.22 pentru a ob\c tine c\u{a} } \alpha+\beta=\alpha\\
+& = &  \alpha   \quad \text{aplic\u am Propozi\c tia~2.29}
+\eua
+\item Avem c\u a $\alpha <\aleph_0 \le \beta$, conform Propozi\c{t}iei~2.8.(ii) \c si  Propozi\c{t}iei~2.14.
+\ee
+}
+
+
+%prob
+\probex[1,5 puncte]
+Demonstra\c ti c\u a
+$$\big\vert (1,3)\cup [2,4] \big\vert  = \big\vert  [1,2)\cup \{3,4\} \big\vert = \big\vert [1,2]\cup\{3k\mid k\in\N\} \big\vert = {\mathfrak c}.$$
+\solution{Avem
+\bua
+\big\vert  (1,3)\cup [2,4] \big\vert  &=&\big\vert  (1,4]  \big\vert = {\mathfrak c}\\
+\big\vert [1,2)\cup \{3,4\} \big\vert  &=& \big\vert [1,2)\big\vert  + \big\vert  \{3,4\}\big\vert  = {\mathfrak c}+\mathbf{2}= {\mathfrak c}\\
+\big\vert [1,2]\cup\{3k\mid k\in\N\} \big\vert  &=& \big\vert [1,2]\big\vert + \big\vert \{3k\mid k\in\N\}\big\vert ={\mathfrak c}+\aleph_0= {\mathfrak c}\\
+\eua
+}
+
+
+\section{Logica propozi\c tional\u a}
+
+\probex [1 punct]
+Reamintim c\u{a} $V=\{v_n\mid n\in\N\}$ este mul\c timea variabilelor din logica propozi\c tional\u a.  Fie $W:=\{v_{2n}\mid n\in\N\}$.
+S\u a se demonstreze c\u{a}  $W$ este num\u arabil\u a.
+
+\solution{
+ Fie $2\N$ mul\c timea numerelor pare. Deoarece $f:\N\to 2\N, \, f(n)=2n$ este o bijec\c tie, rezult\u a c\u a $2\N$ este num\u arabil\u a. Fie 
+ $$g:2\N\to W,\, g(2n)=v_{2n}.$$ 
+ Cum $g$ este bijec\c tie, ob\c tinem c\u a $W$ este de asemenea num\u arabil\u a.
+}
+
+
+\probex [1 punct]
+Ar\u ata\c ti c\u a pentru orice  formule $\vp$, $\psi$, $\chi$, avem:
+$$\vp \ra (\psi \sau \chi) \tautechiv (\vp \ra \psi) \sau (\vp \ra \chi).$$
+\solution{
+Fie $e:V\to \{0,1\}$ o evaluare arbitrar\u a. Trebuie s\u a demonstr\u am c\u a 
+ \[e^+(\vp \ra (\psi \sau \chi))=e^+((\vp \ra \psi) \sau (\vp \ra \chi)),\]
+ deci c\u a
+ \[   \]
+ \[e^+(\vp) \simp (e^+(\psi) \ssau e^+(\chi)) =(e^+(\vp) \simp e^+(\psi)) \ssau (e^+(\vp) \simp e^+(\chi)).\]
+Avem cazurile:
+\be
+\item  $e^+(\vp) = 1$. Atunci
+\bua
+e^+(\vp) \simp (e^+(\psi) \ssau e^+(\chi)) &=& 1\simp (e^+(\psi) \ssau e^+(\chi))= e^+(\psi) \ssau e^+(\chi) \\
+(e^+(\vp) \simp e^+(\psi)) \ssau (e^+(\vp) \simp e^+(\chi)) &=& (1\simp e^+(\psi)) \ssau (1 \simp e^+(\chi))\\
+&=& e^+(\psi)\ssau e^+(\chi).
+\eua
+\item  $e^+(\vp) = 0$. Atunci
+\bua
+e^+(\vp) \simp (e^+(\psi) \ssau e^+(\chi)) &=& 0\simp (e^+(\psi) \ssau e^+(\chi))= 1\\
+(e^+(\vp) \simp e^+(\psi)) \ssau (e^+(\vp) \simp e^+(\chi)) &=& (0\simp e^+(\psi)) \ssau (0 \simp e^+(\chi))= 1\ssau 1=1.
+\eua
+\ee
+}
+
+
+\section{Logica de ordinul \^int\^ai}
+
+\probex[1,5 puncte]
+S\u a se arate c\u a pentru orice limbaj $\lc$ de ordinul I  \c si orice formule $\vp$, $\psi$ ale lui $\lc$, avem:
+\be
+\item $\exists x (\vp \si \psi)\models \exists x\vp \sau \exists x \psi$, pentru orice variabil\u a $x$.
+\item $\exists x (\vp \si \psi) \vDashv \vp \si \exists x\psi$,  pentru orice variabil\u a $x \not \in FV(\vp)$.
+\ee
+\solution{ Fie $\cA$ o $\lc$-structur\u a \c si $e: V \to A$.
+
+\be
+\item Ob\c tinem  \\
+\bt{lll} 
+$\cA \models \exists x(\vp\si\psi)[e]$ &$\Leftrightarrow$ &  exist\u a $a \in A$ \ai $\cA \models (\vp \si \psi)[e_{x \la a}]$\\
+&$\Leftrightarrow$ & exist\u a $a \in A$ \ai $(\cA \models\vp [e_{x \la a}]$ \c si $\cA\models\psi [e_{x \la a}])$\\
+&$\Rightarrow$ & exist\u a $a\in A$ \ai $\cA \models\vp [e_{x \la a}]$ \c si \\
+&& exist\u a $a\in A$ \ai $\cA \models\psi[e_{x \la a}]$\\
+&$\Leftrightarrow$ & $\cA \models(\exists x \vp)[e]$ \c si $\cA\models (\exists x \psi)[e]$\\
+& $\Rightarrow$ & $\cA \models (\exists x\vp)[e]$ sau $\cA \models (\exists x\psi)[e]$\\
+& $\Leftrightarrow$ & $\cA \models (\exists x \vp \sau \exists x \psi)[e]$.
+\et
+
+
+\item Ob\c tinem  \\
+\bt{lll} 
+\bt{lll} 
+$\cA\models \exists x(\vp \si \psi)[e]$ &$\Leftrightarrow$ & exist\u a $a\in A$ \ai  $\cA\models (\vp \si \psi)[e_{x\la a}]$ \\
+&$\Leftrightarrow$ & exist\u a $a\in A$ \ai   $(\cA\models  \vp[e_{x\la a}]$ \c si $\cA\models \psi[e_{x\la a}])$ \\
+&$\Leftrightarrow$ & exist\u a $a\in A$ \ai  $(\cA\models  \vp [e]$ \c si $\cA\models \psi[e_{x \la a}])$ \\
+&& conform Propozi\c tiei~4.21\\
+&$\Leftrightarrow$ &  $\cA\models\vp [e]$  \c si exist\u a $a\in A$ \ai  $\cA\models \psi[e_{x \la a}]$\\
+&$\Leftrightarrow$ &  $\cA\models\vp [e]$  \c si  $\cA\models \exists x \psi[e]$ \\
+&$\Leftrightarrow$ & $\cA\models (\vp \si \exists x \psi)[e]$.
+\et
+\et
+\ee
+}
+
+
+\probex[1,5 puncte]
+Fie $\lc$ un limbaj de ordinul I care con\c{t}ine:
+\bi
+\item dou\u{a} simboluri de rela\c{t}ii unare $S$, $T$  \c{s}i un simbol de rela\c{t}ie binar\u{a} $R$;
+\item un  simbol de opera\c{t}ie unar\u{a} $f$;
+\item un simbol de constant\u a  $c$.
+\ei
+S\u{a} se g\u{a}seasc\u{a} forme normale prenex pentru urm\u{a}toarele formule 
+ale lui $\lc$:
+\bua
+\vp &:=& \non \exists x  R(x,c) \si \forall y \non S(y), \\[1mm]
+\psi &:=&  \exists x ( S(x) \to \forall y (f(y) =c) ) \to \neg ( \forall x T(x) \sau \forall y S(y)).
+\eua
+\solution{
+Avem c\u a
+\bua
+\vp  & \vDashv &  \forall x  \non R(x,c) \si \forall y \non S(y)) \\
+ & \vDashv &  \forall x  (\non R(x,c) \si \forall y \non S(y)) \\
+& \vDashv &  \forall x \forall y (\non R(x,c)\si \non S(y))\\[2mm]
+\psi 
+ & \vDashv & \exists x \forall y( S(x) \to  (f(y) =c) ) \to
+\neg ( \forall x T(x) \sau \forall y S(y))\\ 
+& \vDashv & \exists x \forall y( S(x) \to  (f(y) =c) ) \to
+ ( \neg \forall x  T(x) \si \neg \forall y  S(y) )\\ 
+ & \vDashv & \exists x \forall y( S(x) \to  (f(y) =c) ) \to
+ ( \exists x \neg  T(x) \si \exists  y \neg S(y) )\\ 
+ & \vDashv & \exists x \forall y( S(x) \to  (f(y) =c) ) \to
+ \exists x ( \neg  T(x) \si \exists  y \neg S(y) )\\ 
+& \vDashv & \exists x \forall y( S(x) \to  (f(y) =c) ) \to
+\exists x \exists  y  ( \neg  T(x) \si \neg S(y) )\\ 
+& \vDashv &  \forall x \big(\forall y( S(x) \to  (f(y) =c) ) \to
+\exists x \exists  y  ( \neg  T(x) \si \neg S(y)) \big)\\ 
+& \vDashv &  \forall x \exists y  \big(( S(x) \to  (f(y) =c) ) \to
+\exists x \exists  y  ( \neg  T(x) \si \neg S(y)) \big)\\ 
+& \vDashv &  \forall x \exists y  \big(( S(x) \to  (f(y) =c) ) \to
+\exists u \exists  v  ( \neg  T(u) \si \neg S(v)) \big)\\ 
+& \vDashv &  \forall x \exists y  \exists u \big(( S(x) \to  (f(y) =c) ) \to
+\exists  v  ( \neg  T(u) \si \neg S(v)) \big)\\ 
+& \vDashv &  \forall x \exists y \exists u \exists  v \big(( S(x) \to  (f(y) =c) ) \to
+ ( \neg  T(u) \si \neg S(v) )\big).
+ \eua 
+}
+
+\probex[2 puncte]
+Fie $\lc$ un limbaj de ordinul I, $\cK$ o clas\u a de $\lc$-structuri finit axiomatizabil\u a \c si $\Gamma$ o mul\c time de enun\c turi. 
+Demonstra\c ti c\u a dac\u a $\Gamma$ axiomatizeaz\u a $\cK$, atunci $\cK$ este axiomatizat\u a de o 
+submul\c time finit\u a a lui $\Gamma$. 
+
+\solution{Presupunem c\u a $Mod(\Gamma)=\cK$. Deoarece $\cK$ este finit axiomatizabil\u a, exist\u a o mul\c time finit\u a de enun\c turi $\Delta=\{\vp_1, \ldots, \vp_n\}$ astfel \^inc\^at 
+$Mod(\Delta)=\cK$. 
+
+Lu\u am  $\vp:=\vp_1\si \ldots \si \vp_n$. Atunci $Mod(\vp)=Mod(\Delta)=\cK$. Deoarece $Mod(\vp)=\cK=Mod(\Gamma)$, 
+avem c\u a $\Gamma\cup\{\neg\vp\}$ este nesatisfiabil\u a. Aplic\^and Teorema de compacitate, rezult\u a c\u a 
+ $\Gamma\cup\{\neg\vp\}$ are o submul\c time finit\u a nesatisfiabil\u a. A\c sadar, exist\u a o submul\c time finit\u a $\Sigma$ a lui
+ $\Gamma$ \ai $\Sigma\cup\{\neg\vp\}$ este nesatisfiabil\u a. 
+ Demonstr\u am acum c\u a $\cK=Mod(\Sigma)$.
+ 
+ "$\se$" $\cK=Mod(\Gamma)\se Mod(\Sigma)$.
+ 
+  "$\supseteq$" Fie $\cA\in Mod(\Sigma)$. Deoarece $\Sigma\cup\{\neg\vp\}$ este nesatisfiabil\u a, rezult\u a c\u a $\cA\not\models \neg\vp$, deci c\u a $\cA\models \vp$. A\c sadar, $\cA\in Mod(\vp)=\cK$. 
+ }
+
+
+
+\end{document}
+
+
+

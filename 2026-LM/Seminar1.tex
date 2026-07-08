@@ -1,0 +1,164 @@
+\documentclass[12pt]{article}
+
+
+\usepackage{macros}
+\usepackage{macros-gen-ro}
+\usepackage{macros-math}
+\usepackage{macros-logic}
+
+\newcommand{\seminarno}{0}
+\newcommand{\curs}{Logic\u a matematic\u a}
+\newcommand{\departamentan}{ FMI, Mate, Anul I}
+
+
+\newsavebox{\descrierecurs}
+\savebox{\descrierecurs}{\raisebox{-11pt}{\parbox[t]{8cm} {\bf \departamentan \\ \curs}}}
+
+\newcommand{\titlu}{ 
+\usebox{\descrierecurs}  
+%\bigskip
+%\begin{flushright} \datum \end{flushright}
+\vspace{10mm}
+\begin{center}{\Large \bf 
+Seminar \seminarno}
+ \end{center} \vspace{5mm}
+}
+
+
+\newcounter{exercitiuno}
+\newcommand{\semex}{\stepcounter{exercitiuno}{\vspace{0.3cm}\noindent \bf (S\seminarno.\arabic{exercitiuno}) }}
+
+\begin{document}
+
+
+\renewcommand{\seminarno}{1}
+\setcounter{exercitiuno}{0}
+
+\titlu
+
+
+\renewcommand{\solution}[1]{}
+%\renewcommand{\details}{}
+
+
+\parindent0pt
+
+
+
+\semex
+Fie $A,B,C$ mul\c{t}imi. Demonstra\c{t}i c\u{a}
+\be
+\item $A\times (B\cup C) = (A\times B)\cup (A\times C)$.
+\item $A\times (B\cap C) = (A\times B)\cap (A\times C)$. 
+\ee
+\solution{
+\be
+\item 
+Avem c\u a  \\[1mm]
+\bt{lll} 
+$x \in A\times (B\cup C)$  & \ddacam &  exist\u a $ a \in A$ \c si $y \in B \cup C$ cu $x=(a,y)$ \\
+&\ddacam &  exist\u a  $ a \in A$ \c si $y \in B$ sau $y \in C$ cu $x=(a,y)$ \\
+&\ddacam & \big(exist\u a  $a \in A$ \c si $y \in B$ cu $x=(a,y)$\big) \\
+&& sau \big(exist\u a  $a \in A$ \c si $y \in C$ cu $x=(a,y)$\big) \\
+&\ddacam & $x \in A \times B$ sau $x \in A \times C$ \\
+&\ddacam & $x \in (A\times B)\cup (A\times C)$.
+\et
+
+Prin urmare, $A\times (B\cup C) =  (A\times B)\cup (A\times C)$. 
+
+\item Demonstr\u am prin dubl\u a  incluziune. 
+
+$\se$ Fie $x \in A\times (B\cap C)$. Atunci exist\u a  $a \in A$ \c si $y \in B \cap C$ cu $x=(a,y)$. Deoarece $y\in B$, rezult\u a c\u a $x\in A\times B$. Deoarece $y\in C$, rezult\u a c\u a $x\in A\times C$.  Prin urmare, $x\in  (A\times B)\cap (A\times C)$.
+
+$\supseteq$ Fie $x \in (A\times B)\cap (A\times C)$. Atunci $x\in A\times B$ \c si $x\in A\times C$, a\c sadar, $x=(a_1,y_1)$ cu $a_1\in A, y_1\in B$ \c si
+$x=(a_2,y_2)$ cu $a_2\in A, y_2\in B$. Deoarece $x=(a_1,y_1)=(a_2,y_2)$, trebuie s\u a avem $a_1=a_2$ \c si $y_1=y_2$. Fie $a:=y_1=y_2$ \c si $y:=y_1=y_2$.
+Atunci $x=(a,y)$, cu $a\in A$ \c si $y\in B\cap C$. Rezult\u a c\u a $x\in A\times (B\cap C)$.
+
+Am demonstrat c\u a  $A\times (B\cap C) = (A\times B)\cap (A\times C)$.
+\ee
+}
+
+
+\semex 
+Fie $A=\{a,b,c,d\}$ \c{s}i $R=\{(a,b),(a,c),(c,d),(a,a),(b,a)\}$ o rela\c{t}ie binar\u{a} pe $A$. Care este compunerea $R\circ R$? Care este inversa $R^{-1}$ a lui $R$?  \\
+\solution{Ob\c{t}inem 
+\bua R \circ R &=& \{(a,a), (a,b), (a,c), (a,d), (b,a), (b,b), (b,c)\},\\
+R^{-1} &=& \{ (a,a), (a,b), (b,a), (c,a), (d,c)\}.
+\eua
+}
+
+\semex
+S\u a se demonstreze asociativitatea compunerii rela\c{t}iilor. \\
+\solution{
+Fie $R \subseteq A \times B$, $Q \subseteq B \times C$, $S \subseteq C \times D$ trei rela\c tii. Vrem  s\u a demonstr\u am c\u a 
+$$(R \circ Q) \circ S = R \circ (Q \circ S).$$ 
+
+$\se$ Fie $(a,d) \in (R \circ Q) \circ S$. Atunci exist\u a $c \in C$ cu $(a,c) \in R \circ Q$ \c si $(c,d) \in S$. Din faptul c\u a $(a,c) \in R \circ Q$ avem c\u a exist\u a $b \in B$ cu $(a,b)\in R$ \c si $(b,c) \in Q$. Din faptul c\u a $(b,c) \in Q$ \c si $(c,d) \in S$, avem $(b,d) \in Q \circ S$. 
+Am ob\c tinut c\u a $(a,b)\in R$ \c si $(b,d) \in Q \circ S$. Prin urmare, $(a,d) \in R \circ (Q \circ S)$. 
+
+$\supseteq$ Se demonstreaz\u a analog. 
+}
+
+\semex
+Fie $(A,\leq)$ o mul\c{t}ime par\c{t}ial ordonat\u{a} \c{s}i  $\emptyset \ne S\se A$. 
+Demonstra\c ti urm\u atoarele:
+\be
+\item At\^{a}t minimul, c\^{a}t \c{s}i maximul lui $S$ sunt unice (dac\u{a} exist\u{a}).
+\item Dac\u a $\min S$ exist\u a, atunci $\min S$ este element minimal al lui $S$.
+\item Dac\u a $\max S$ exist\u a, atunci $\max S$ este element maximal al lui $S$. 
+\ee
+\solution{
+\be
+\item Presupunem c\u a $x$ \c si $x'$ sunt minime ale lui $S$ \c si demonstr\u am c\u a sunt egale.
+
+Deoarece  $x$ este minim al lui $S$, avem c\u a  $x \leq y$  pentru orice $y \in S$. Lu\^and $y:=x'$ ob\c tinem
+\beq
+x \leq x' \label{xx'}
+\eeq
+
+Deoarece  $x'$ este minim al lui $S$, avem c\u a  $x' \leq y$ pentru orice $y \in S$. Lu\^and $y:=x$ ob\c tinem
+\beq
+x' \leq x \label{x'x}
+\eeq
+Din \eqref{xx'} \c si \eqref{x'x}, folosind faptul c\u a $\leq $ este antisimetric\u a, rezult\u a c\u a $x=x'$.
+
+Se procedeaz\u a asem\u an\u ator pentru maxim.
+\item Fie $x = \min S$.  Fie $t\in S$ \ai  $t\leq x$. Deoarece $x$ este minimul lui $S$, avem \c si  c\u a $x\leq t$. Din $t\leq x$, $x\leq t$ \c si antisimetria lui
+$\leq$ rezult\u a c\u a $x=t$. Prin urmare, $x$ este element minimal al lui $S$.
+
+\item Se demonstreaz\u a similar. 
+\ee
+}
+
+
+
+\semex
+Fie $X$ o mul\c time. S\u a se arate c\u a nu exist\u a o func\c tie surjectiv\u a cu domeniul $X$ \c si codomeniul $\cP(X)$. \\
+\solution
+{
+Presupunem c\u a ar exista \c si fie $f: X \to \cP(X)$ surjectiv\u a. Fie mul\c timea 
+$$A = \{x \in X \mid x \notin f(x) \} \in \cP(X).$$
+ Dat fiind c\u a $f$ este surjectiv\u a, exist\u a $y \in X$ cu $f(y)=A$. Dar atunci:
+$y \in A \Leftrightarrow y \notin f(y) = A \Leftrightarrow y \notin A$
+ceea ce este o contradic\c tie.
+}
+
+\semex
+Fie $\mathcal{F} = \{B \subseteq \N \mid B \text{ este finită} \}$.  Să se demonstreze că $(\mathcal{F}, \subseteq)$ nu este inductiv ordonată. \\
+\solution{
+Consider\u am submul\c timea 
+\bce 
+$\cC = \{ A_n \mid n\in \N \}$, unde $A_n = \{ 0,1, 2, \ldots, n \}$.
+\ece 
+Se arat\u a u\c sor c\u a  $\cC$ este total ordonată: pentru orice $m, n\in \N$, avem c\u a $A_m \se A_n$ dacă $m \leq n$  \c si $A_n \se A_m$ dacă $n \leq m$. 
+
+Presupunem c\u a $B\in \mathcal{F}$ este majorant al lui $\cC$. Deoarece $B$ este finit\u a, exist\u a $M=\max B$. Rezult\u a c\u a $B \se A_M  \subset A_{M+1}$.  Am ob\c tinut o 
+contradic\c tie.  Prin urmare, $\cC$ nu are majoran\c ti. 
+
+Deci, $(\mathcal{F}, \subseteq)$ nu este inductiv ordonată.
+}
+
+\end{document}
+
+
+

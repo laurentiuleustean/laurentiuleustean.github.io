@@ -1,0 +1,165 @@
+\documentclass[12pt]{article}
+
+
+\usepackage{macros}
+\usepackage{macros-gen-ro}
+\usepackage{macros-curs-ro}
+\usepackage{macros-math}
+\usepackage{macros-logic}
+
+
+\begin{document}
+
+
+\renewcommand{\seminarno}{4}
+\setcounter{exercitiuno}{0}
+
+\titluseminarLM
+
+
+\renewcommand{\solution}[1]{}
+
+\parindent0pt
+
+
+\semex
+Fie LP logica propozi\c tional\u a. S\u a se arate urm\u atoarele:
+\be
+\item Mul\c timea $Expr$ a expresiilor lui LP este num\u arabil\u a.
+\item  Mul\c timea $Form$ a formulelor lui LP este num\u arabil\u a.
+\ee
+\solution{
+\be
+\item Avem c\u{a} $Expr= \bigcup_{n\in \N} Sim^n=\{\lambda\}\cup \bigcup_{n\in\N^*} Sim^n$.  Deoarece  $Sim=V\cup\{\non, \ra, (,)\}$  
+\c si $V$ este num\u arabil\u a,  ob\c tinem,   c\u{a} $|Sim|=|V|+|\{\non, \ra, (,)\}|=\aleph_0+4=\aleph_0$. Deci $Sim$ este num\u arabil\u a. 
+Conform Propozi\c tiei~2.42.(i), rezult\u a c\u{a} $Sim^n$ este num\u arabil\u a pentru orice $n\geq 1$. 
+Aplic\^and Propozi\c tia~2.42.(iii) 
+rezult\u a c\u{a} $Expr$ este cel mult num\u arabil\u a. Deoarece $Sim\se Expr$ \c si $Sim$ este num\u arabil\u a, rezult\u a c\u{a}
+ $Expr$ este, de asemenea, num\u arabil\u a. 
+\item Avem c\u{a}  $V\se Form \se Expr$. Prin urmare, $\aleph_0=|V|\leq |Form|$ \c si $|Form|\leq |Expr|=\aleph_0$. Aplic\^and Teorema~Cantor-Schr\"oder-Bernstein, ob\c tinem c\u{a} $|Form|=\aleph_0$. Prin urmare, $Form$ este num\u arabil\u a.
+\ee
+}
+
+\semex
+Fie LP logica propozi\c tional\u a. Definim  $$W:=\{\vp \in Form \mid Var(\vp)=\{v_1, v_2, v_3\}\}.$$ 
+S\u a se demonstreze c\u{a}  $W$ este num\u arabil\u a.
+
+\solution{
+Deoarece $W\se Form$, avem evident $|W|\leq |Form|=\aleph_0$.  Fie 
+\[f:\N^* \to W, \quad f(n)= \underbrace{v_1\si v_1\si \ldots \si v_1}_{n\text{~or}i}.\]
+Evident, $f$ este injectiv\u a, prin urmare $\aleph_0=|\N^*|\leq |W|$.
+Aplic\u am acum Teorema Cantor-Schr\"oder-Bernstein pentru a ob\c tine c\u a  $|W|=\aleph_0$.
+}
+
+\semex
+Consider\u am limbajul de ordinul I 
+$\lc_\arit=(\sless; \splus, \stimes, \sS; \szero)$ 
+(limbajul aritmeticii) \c si
+$\lc_\arit$-structura $\smnat=(\N,<,+,\cdot, S, 0)$. 
+Fie formula $\vp = \orfi v_4 (v_3 \sless v_4 \sau v_3 \egal v_4)$. 
+S\u a se caracterizeze acele interpret\u ari $e: V \to \N$ ce au proprietatea c\u a $\vp^\smnat(e)=1$.
+
+\solution{ 
+Fie $e : V\to \N$. Avem
+\bua 
+\vp^\smnat(e)=1 &\Ba &  ( \orfi v_4 (v_3 \sless v_4 \sau v_3 \egal v_4))^\cN(e)=1\\
+ & \Ba &  \text{pentru orice $a \in \N$, } (v_3 \sless v_4 \sau v_3 \egal v_4)^\cN(e_{v_4 \mapsto a})=1 \\
+ & \Ba &  \text{pentru orice $a \in \N$, } (v_3 \sless v_4)^\cN(e_{v_4 \mapsto a}) \ssau (v_3 \egal v_4)^\cN(e_{v_4 \mapsto a})=1 \\
+ & \Ba &  \text{pentru orice $a \in \N$, } (v_3 \sless v_4)^\cN(e_{v_4 \mapsto a})=1 \text{ sau } (v_3 \egal v_4)^\cN(e_{v_4 \mapsto a})=1 \\
+ & \Ba &  \text{pentru orice $a \in \N$, } e_{v_4 \mapsto a}(v_3)<e_{v_4 \mapsto a}(v_4) \text{ sau } e_{v_4 \mapsto a}(v_3)=e_{v_4 \mapsto a}(v_4) \\
+ & \Ba &  \text{pentru orice $a \in \N$, } e_{v_4 \mapsto a}(v_3)\leq e_{v_4 \mapsto a}(v_4)\\
+ & \Ba &  \text{pentru orice $a \in \N$, } e(v_3)\leq a\\
+ & \Ba &  e(v_3)=0.
+\eua
+}
+
+
+\semex
+S\u a se arate c\u a pentru orice limbaj $\lc$ de ordinul I, orice formule $\vp$, $\psi$ ale lui $\lc$ \c si orice variabil\u a $x$, avem:
+\bea
+\neg \forall x \vp & \vDashv  & \exists x\neg \vp  \label{ne-forall-exists-neg} \\
+\forall x \varphi  & \vDash  & \forall x(\varphi \sau \psi) \label{fx-vp-psi}\\
+\forall x(\vp \ra \psi) & \vDash  & \exists x \vp \ra \exists x \psi  \label{sem7-fol-3}
+\eea
+\solution{ Fie $\cA$ o $\lc$-structur\u a \c si $e: V \to A$.
+
+Demonstr\u am \eqref{ne-forall-exists-neg}:\\[1mm]
+\bt{lll}
+$\cA\models (\neg \forall x \vp)[e] $ & \ddacam & $\cA\not\models ( \forall x \vp)[e]$ \\
+ & \ddacam &  exist\u a $a\in A$ a.\^i. $\cA\not\models \vp [e_{x\mapsto a}]$ \\
+  & \ddacam & exist\u a $a\in A$ a.\^i. $\cA\models (\neg\vp) [e_{x\mapsto a}]$ \\
+  & \ddacam & $\cA\models (\exists x\neg \vp)[e]$.\\[1mm]
+ \et
+  
+ Demonstr\u am \eqref{fx-vp-psi}:\\[1mm]
+\bt{lll}
+$\cA\models (\forall x \varphi)[e]$ & \ddacam &pentru orice $a\in A$, $\cA\models \varphi [e_{x\mapsto a}]$ \\
+& $\,\,\,\Longrightarrow$ & pentru orice $a \in A$, $\cA\models\varphi [e_{x \mapsto a}]$ sau $\cA \models \psi [e_{x \mapsto a}]$ \\
+& \ddacam & pentru orice $a \in A$, $\cA\models (\varphi \sau \psi)[e_{x \mapsto a}]$ \\
+& \ddacam &  $\cA \models (\forall x (\varphi \sau \psi))[e]$.\\[1mm]
+\et
+
+ Demonstr\u am \eqref{sem7-fol-3}:\\[1mm]
+ Avem c\u a  $\cA \models (\forall x(\vp \ra \psi))[e]$ \ddacam pentru orice $a \in A$, $\cA \models (\vp \ra \psi)[e_{x \mapsto a}]$ \ddacam 
+ \bce 
+(*) \qquad pentru orice $a \in A$, 
+ dac\u a $\cA \models \vp[e_{x \mapsto a}]$, atunci $\cA \models \psi[e_{x \mapsto a}]$. 
+ \ece
+ 
+ Vrem s\u a ar\u at\u am c\u a $\cA \models (\exists x \vp \ra \exists x \psi)[e]$, adic\u a
+  \bce 
+(**) \qquad dac\u a $\cA \models (\exists x \vp)[e]$, atunci $\cA \models (\exists x \psi)[e]$. 
+\ece
+Presupunem  c\u a $\cA \models (\exists x \vp)[e]$. 
+ Atunci exist\u a $b \in A$ cu $\cA \models \vp[e_{x \mapsto b}]$. Din (*) rezult\u a c\u a $\cA \models \psi[e_{x \mapsto b}]$. 
+ Deci $\cA \models (\exists x \psi)[e]$, ceea ce trebuia ar\u atat.
+}
+
+
+\semex
+S\u{a} se dea exemple de limbaj $\lc$ de ordinul I \c si de formule 
+$\vp$, $\psi$ ale lui $\lc$ astfel \^{\i}nc\^{a}t
+\be
+\item $\forall x (\vp\sau\psi)  \not\models \forall x\vp\sau \forall x\psi$;
+\item $\exists  x\vp \si \exists  x\psi \not\models \exists x(\vp\si\psi)$.
+\ee
+\solution{Consider\u{a}m $\lc_\arit=(\sless, \splus, \stimes, \sS, \szero)$,  $\lc_\arit$-structura $\smnat:=(\mnat,<,+,\cdot, S, 0)$ \c{s}i $e:V\to \N$ o evaluare arbitrar\u{a} (s\u a zicem, punem $e(v):=7$ pentru orice $v \in V$).
+\be
+\item Fie $\sdoi:=\sS\sS\szero$, $\vp:=x\sless \sdoi$ \c si $\psi:=\neg(x\sless \sdoi)$. Atunci $$\cN\models (\forall x (\vp\sau\psi))[e].$$
+Pe de alt\u{a} parte, 
+\be
+\item 
+$\cN\models (\forall x \vp)[e]$ \ddacam pentru orice $n\in\N$ avem $\cN\models \vp[e_{x\mapsto n}]$ \ddacam 
+pentru orice $n\in\N$, avem $n< 2$, ceea ce nu este adev\u{a}rat (lu\u am $n:=3$, de exemplu). Deci, 
+$\cN\not\models( \forall x \vp)[e].$
+\item $\cN\models (\forall x \psi)[e]$ \ddacam pentru orice $n\in\N$ avem $\cN\models \psi[e_{x\mapsto n}]$ \ddacam 
+pentru orice $n\in\N$, avem $n\geq 2$, ceea ce nu este adev\u{a}rat (lu\u am $n:=1$, de exemplu). 
+Deci, 
+$\cN\not\models( \forall x \psi)[e].$
+\ee
+Prin urmare, $$\cN\not\models( \forall x \vp\sau \forall x \psi)[e].$$
+
+\item Fie $\sdoi:=\sS\sS\szero$, $\vp:=x\sless \sdoi$ \c si $\psi:=\neg(x\sless \sdoi)$. Avem:
+\be
+\item 
+$\cN\models (\exists x \vp)[e]$ \ddacam exist\u{a} $n\in\N$  \ai $\cN\models \vp[e_{x\mapsto n}]$ \ddacam 
+exist\u{a} $n\in\N$  \ai  $n< 2$, ceea ce este adev\u{a}rat (lu\u am $n:=1$, de exemplu). Deci, 
+$\cN\models( \exists x \vp)[e].$
+\item $\cN\models (\exists x \psi)[e]$ \ddacam exist\u{a} $n\in\N$  \ai $\cN\models \psi[e_{x\mapsto n}]$ \ddacam 
+exist\u{a} $n\in\N$  \ai  $n\geq 2$, ceea ce este adev\u{a}rat (lu\u am $n:=3$, de exemplu). Deci, 
+$\cN\models( \exists x \psi)[e].$
+Prin urmare, $$\cN\models (\exists  x\vp \si \exists  x\psi)[e].$$
+\ee
+Pe de alt\u{a} parte,
+$\cN\models (\exists x(\vp\si\psi))[e]$ \ddacam exist\u{a} $n\in\N$  \ai $\cN\models (\vp\si\psi)[e_{x\mapsto n}]$ \ddacam
+exist\u{a} $n\in\N$  \ai $n< 2$ \c{s}i $n\geq 2$, ceea ce este fals. Prin urmare,
+$$\cN\not \models (\exists x(\vp\si\psi))[e].$$
+\ee
+}
+
+
+
+\end{document}
+
+
+

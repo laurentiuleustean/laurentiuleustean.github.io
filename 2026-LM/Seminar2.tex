@@ -1,0 +1,124 @@
+\documentclass[12pt]{article}
+
+
+\usepackage{macros}
+\usepackage{macros-gen-ro}
+\usepackage{macros-curs-ro}
+\usepackage{macros-math}
+\usepackage{macros-logic}
+
+
+\begin{document}
+
+
+\renewcommand{\seminarno}{2}
+\setcounter{exercitiuno}{0}
+
+\titluseminarLM
+
+
+\renewcommand{\solution}[1]{}
+
+
+\parindent0pt
+
+
+\semex
+Demonstra\c ti urm\u atoarele: 
+\be
+\item\label{A-se-B-card} Pentru orice mul\c timi $A$, $B$, dac\u a $A\se B$, atunci $|A|\leq |B|$.
+\item\label{n-mai-mic-elph_0} Pentru orice cardinal finit $\alpha$, avem c\u a $\alpha<\aleph_0$.
+\item\label{alpha-leq-A-sub-B} Pentru orice mul\c time $A$ \c si orice cardinal $\alpha$, dac\u a $\alpha\leq |A|$, atunci 
+exist\u a o submul\c time $B$ a lui $A$ \ai $|B|=\alpha$.
+\item\label{0-leq-alpha} $\mathbf{0}\leq \alpha$ pentru orice cardinal $\alpha$. 
+\item\label{1-leq-alpha} $\mathbf{1}\leq \alpha$ pentru orice cardinal $\alpha\ne \mathbf{0}$. 
+\item\label{leq-refl-tranz} Rela\c tia $\leq$ este reflexiv\u a \c si tranzitiv\u a. 
+\ee
+\solution{
+\be
+\item Fie $A$, $B$ \ai $A\se B$. Dac\u a $A=\emptyset$, atunci $Fun(\emptyset, B)$ are un singur element, 
+func\c tia vid\u a, care este injectiv\u a. Presupunem c\u a $A$ este nevid\u a. Atunci func\c tia  
+incluziune $\iota_A:A\to B, \,\,\iota_A(a)=a$ este injectiv\u a. Prin urmare, $|A|\leq |B|$.
+\item Avem c\u a $\alpha=|A|$, unde $A=\emptyset$ sau  $A=\{0,1,\ldots, n-1\}$ pentru un $n\in\N^*$. 
+Deoarece $A\se \N$, aplic\u am 
+\eqref{A-se-B-card} pentru a ob\c tine c\u a $\alpha\leq \aleph_0$. R\u am\^ane s\u a ar\u at\u am c\u a
+$\alpha\ne\aleph_0$. Demonstr\u am c\u a o func\c tie $h:A\to \N$ nu poate fi surjectiv\u a. 
+Deoarece $h(A)$ este o submul\c time finit\u a a lui $\N$, exist\u a $M:=\max h(A)$. Atunci $M+1\notin h(A)$.
+\item Fie $\alpha=|C|$. Deoarece $\alpha\leq |A|$, exist\u a o func\c tie injectiv\u a $f:C\to A$. Lu\u am $B:=f(C)$. Atunci $B\se A$ \c si
+$|B|=|C|=\alpha$.
+\item  Fie $\alpha=|A|$. Deoarece $\emptyset\se A$, rezult\u a din \eqref{A-se-B-card} c\u a 
+ $\mathbf{0}=|\emptyset|\leq|A|= \alpha$.
+\item Fie $\alpha=|A|$. Deoarece $\alpha\ne \mathbf{0}$, rezult\u a c\u a $A\ne\emptyset$, deci exist\u a
+$a\in A$. Atunci $\{a\}\se A$ \c si, conform \eqref{A-se-B-card},  $\mathbf{1}=|\{a\}|\leq |A|=\alpha$. 
+\item Fie $\alpha=|A|$, $\beta=|B|$ \c si $\gamma=|C|$ cardinale. \\
+Deoarece $1_A:A\to A$ este bijec\c tie, rezult\u a c\u a $\alpha\leq \alpha$. Prin urmare, $\leq$ este reflexiv\u a. \\
+Presupunem c\u a $\alpha\leq \beta$ \c si $\beta\leq \gamma$. Atunci exist\u a func\c tiile injective 
+$f:A\to B$ \c si $g:B\to C$. Rezult\u a c\u a $h:=g\circ f:A\to C$ este injectiv\u a, deci 
+$\alpha \leq \gamma$. A\c sadar, $\leq$ este tranzitiv\u a.  \hfill \qed
+\ee
+}
+
+
+\semex
+Fie $A$, $B$ mul\c timi arbitrare. 
+Definim 
+\[\cF = \{(X,f)\mid X\se A \text{~\c si~} f:X\to B \text{~este func\c tie injectiv\u a}\}\]
+\c si rela\c tia $\leq$ pe $\cF$ astfel:
+\[(X_1,f_1)\leq (X_2,f_2) \Ba X_1\se X_2 \text{~\c si~} f_2|_{X_1}=f_1.\]
+Demonstra\c ti c\u a $(\cF, \leq)$ este inductiv ordonat\u a.
+
+\solution{
+Evident, $\cF$ este nevid\u a (putem alege $X=\emptyset$ \c si $f$ func\c tia vid\u a).  
+Se observ\u a u\c sor c\u a $(\cF, \leq)$ este o mul\c time par\c tial ordonat\u a.\\[1mm]
+Fie $\cG=\{(X_i,f_i) \mid i\in I\}$ o submul\c time total ordonat\u a a lui $\cF$. 
+Fie $\ds X:=\bigcup_{i\in I} X_i\se A$. Definim $f:X\to B$ astfel: 
+\bce 
+dac\u a $x\in X$, alegem un $i\in I$ \ai $x\in X_i$ \c si definim $f(x)=f_i(x)$.
+\ece
+Demonstr\u am mai \^int\^ai c\u a  defini\c tia lui $f$ este corect\u a. Fie $i,j\in I, i\ne j$  a.\^i. $x\in X_i\cap X_j$.  Trebuie s\u a
+ar\u at\u am c\u a $f_i(x)=f_j(x)$. 
+Deoarece $\cG$ este total ordonat\u a, avem  $(X_i,f_i)\leq (X_j,f_j)$ sau $ (X_j,f_j)\leq  (X_i,f_i)$. \^In primul caz, rezult\u a c\u a
+$X_i\se X_j$ \c si  $f_i=f_j|_{X_i}$, deci $f_j(x)=f_i(x)$. Cel de-al doilea caz se trateaz\u a similar.
+
+De asemenea, se observ\u a u\c sor c\u a $(X_i,f_i)\leq (X,f)$ pentru orice $i\in I$.  \\
+Demonstr\u am \^in continuare c\u a $f$ este injectiv\u a. Fie $x,y\in X$ cu $f(x)=f(y)$. Atunci exist\u a
+$i,j\in I$ \ai $x\in X_i$ \c si $y\in X_j$. Rezult\u a c\u a $f(x)=f_i(x)$ \c si $f(y)=f_j(y)$, deci 
+$f_i(x)=f_j(y)$. 
+Deoarece $\cG$ este total ordonat\u a, avem urm\u atoarele dou\u a 
+posibilit\u a\c ti:
+\be
+\item $(X_i,f_i)\leq (X_j,f_j)$. Atunci $x\in X_i\se X_j$ \c si $f_i=f_j|_{X_i}$, deci $f_j(x)=f_i(x)$. Ob\c tinem c\u a 
+$f_j(x)=f_j(y)$. Deoarece $f_j$ este injectiv\u a, rezult\u a c\u a $x=y$. 
+\item $ (X_j,f_j)\leq  (X_i,f_i)$. Se demonstreaz\u a similar c\u a $x=y$.
+\ee
+ A\c sadar,  $(X,f)\in \cF$ este un majorant al lui $\cG$. Prin urmare,   $(\cF, \leq)$ este inductiv ordonat\u a. \hfill \qed
+}
+
+
+
+\semex
+Demonstra\c ti c\u a pentru orice numere reale $a<b$, $c<d$, $|(a,b)|=|(c,d)|$. 
+
+\solution{Definim
+\[f: (a,b) \to (c,d), \quad f(x)=\frac{d-c}{b-a}(x-a) + c \, \text{~pentru orice~} x\in (a,b).\] 
+Defini\c tia lui $f$ este corect\u a: dac\u a $a < x < b$, avem c\u a $0 < x-a < b-a$ \c si 
+$0 < \frac{d-c}{b-a}(x-a) < d-c$, deci $c<f(x)<d$.
+Definim 
+\[g : (c,d) \to (a,b), \quad g(y)=\frac{b-a}{d-c}(y-c) + a\, \text{~pentru orice~}  y\in (c,d).\]
+ Se observ\u a u\c sor c\u a $f$ \c si $g$ sunt inverse una celeilalte. Prin urmare,  $f$ este bijectiv\u a, deci $|(a,b)|=|(c,d)|$.
+ \hfill \qed
+ }
+
+\semex
+Demonstra\c ti c\u a pentru orice numere reale $a<b$, $ |(a,b)|={\mathfrak c}$.
+
+\solution{
+\c Stim c\u a func\c tia $\text{tg}:\left(\frac{-\pi}2, \frac{\pi}2\right)\to \R$ este bijectiv\u a. Prin 
+urmare, ${\mathfrak c}=\left|\left(\frac{-\pi}2,\frac{\pi}2\right)\right|$. Aplic\u am acum 
+(S2.3) pentru a ob\c tine c\u a $|(a,b)|=\left|\left(\frac{-\pi}2,\frac{\pi}2\right)\right|={\mathfrak c}$.
+\hfill \qed}
+
+\end{document}
+
+
+

@@ -1,0 +1,178 @@
+\documentclass[12pt]{article}
+
+
+\usepackage{macros}
+\usepackage{macros-gen-ro}
+\usepackage{macros-curs-ro}
+\usepackage{macros-math}
+\usepackage{macros-logic}
+
+
+\begin{document}
+
+
+\renewcommand{\seminarno}{5}
+\setcounter{exercitiuno}{0}
+
+\titluseminarLM
+
+
+\renewcommand{\solution}[1]{}
+
+\parindent0pt
+
+\semex
+Fie $\lc$ un limbaj de ordinul I ce con\c tine un simbol de rela\c tie unar $P$. S\u a se arate c\u a 
+$$ \models \exists v_0 (P(v_0) \ra \forall v_1 P(v_1)).$$
+\solution{
+Fie $\cA$ o $\lc$-structur\u a \c si $e: V \to A$ o evaluare. 
+Atunci:  
+
+$\cA \models \big(\exists v_0 (P(v_0) \ra \forall v_1 P(v_1)) \big)[e]$   \ddacam   exist\u a $a \in A$ \ai  $\cA \models (P(v_0) \ra \forall v_1 P(v_1))[e_{v_0 \mapsto a}]$ \\
+ \ddacam  exist\u a $a \in A$ \ai \big( $\cA \not\models (P(v_0))[e_{v_0  \mapsto  a}]$ sau $\cA \models (\forall v_1 P(v_1))[e_{v_0  \mapsto a}$] \big) \\
+ \ddacam    exist\u a $a \in A$ \ai  \big($a \not\in P^\cA$ sau pentru orice $b \in A$, $b \in P^\cA$\big) \\
+  \ddacam    \big(exist\u a $a \in A$ \ai  $a \not\in P^\cA$\big) sau \big(pentru orice $b \in A$, $b \in P^\cA$\big)\\
+    \ddacam   $P^\cA\ne A$ sau $P^\cA =A$,
+  
+  ceea ce este adev\u arat.
+}
+
+\mbox{}
+
+\^In continuare,  $\lc$  este un limbaj de ordinul I \c si  $\Gamma\cup\lbr \vp, \psi \rbr \se Form_\lc$.
+
+\semex
+S\u{a} se demonstreze c\u{a}:
+\be
+\item $\tautmodels \vp \si (\vp \ra \psi) \to \psi$. 
+\item $\tautmodels \psi \to (\vp \ra \psi)$. 
+\ee
+\solution{Vom folosi \^in demonstra\c tii urm\u atoarele: pentru orice $a\in \{0,1\}$,
+$$ 0\ssi a =0, \quad 0\simp a=1, \quad 1\ssi a =a, \quad 1\simp a = a, \quad a\simp 1=1, \quad a\simp a=1.$$
+
+Fie $\cA$ o $\lc$-structur\u a \c si $\evt: Form_\lc\to \{0,1\}$ o $\lc$-evaluare de adev\u{a}r. 
+\be
+\item Avem c\u a 
+\begin{align*}
+F(\vp \si (\vp \ra \psi) \to \psi)  & =   F(\vp  \si (\vp \ra \psi)) \simp F(\psi) =  \big(F(\vp)  \ssi F(\vp \ra \psi)\big) \simp F(\psi) \\
+& = \big(F(\vp)  \ssi (F(\vp) \simp F(\psi))\big) \simp F(\psi).
+\end{align*}
+Avem urm\u atoarele cazuri:
+\be
+\item $F(\vp)=0$. Atunci $\big(F(\vp)  \ssi (F(\vp) \simp F(\psi))\big) \simp F(\psi)=\big(0 \ssi (0\simp F(\psi))\big) \simp F(\psi)=0 \simp F(\psi)=1$.
+\item $F(\vp)=1$. Atunci $\big(F(\vp)  \ssi (F(\vp) \simp F(\psi))\big) \simp F(\psi)=\big(1 \ssi (1\simp F(\psi))\big) \simp F(\psi)=(1\simp F(\psi)) \simp F(\psi)=F(\psi) \simp F(\psi)=1$.
+\ee
+
+\item Avem c\u a 
+\begin{align*}
+F(\psi \to (\vp \ra \psi))  & =   F(\psi) \simp  F(\vp \ra \psi)=    F(\psi) \simp  (F(\vp) \simp F(\psi)).
+\end{align*}
+Avem urm\u atoarele cazuri:
+\be
+\item $F(\psi)=0$. Atunci $F(\psi) \simp  (F(\vp) \simp F(\psi)) = 0 \simp  (F(\vp) \simp 0)=1$.
+\item $F(\psi)=1$. Atunci $1\simp  (F(\vp) \simp 1) = F(\vp) \simp 1=1$.
+\ee
+\ee
+}
+
+
+\semex
+ S\u a se arate c\u a:
+\be
+\item  $\models \forall x\vp\to \vp$.
+\item Pentru orice  variabil\u a $x$ cu $x \notin FV(\vp)$, $\models \vp \ra \forall x \vp$.
+\item Pentru orice variabil\u a $x$ \c si orice termen $t$ cu $x \notin Var(t)$, $\models \exists x(x=t)$.
+\ee
+\solution{ 
+Fie $\cA$ o $\lc$-structur\u a \c si $e: V \to A$ o evaluare.
+\be
+\item Vrem s\u a ar\u at\u am c\u a $\cA \models \lp \forall x \vp \to \vp\rp[e]$.  Pentru aceasta,  presupunem c\u a $\cA \models (\forall x \vp)[e]$, adic\u a pentru orice $a \in A$, $\cA \models \vp[e_{x \mapsto a}]$. Pentru $a:=e(x)$, avem c\u a $e_{x \mapsto a}=e$. Prin urmare, $\cA\models \vp[e]$
+\item Vrem s\u a ar\u at\u am c\u a $\cA \models \lp \vp \ra \forall x \vp\rp[e]$. Pentru aceasta, presupunem c\u a $\cA\models \vp[e]$ \c si  ar\u at\u am c\u a $\cA \models (\forall x \vp)[e]$. Fie $a \in A$. 
+Cum $x \notin FV(\vp)$, avem c\u a  $e$ \c si $e_{x\mapsto a}$ coincid pe $FV(\vp)$, deci putem aplica Propozi\c tia 4.45 pentru a ob\c tine c\u a $\cA\models \vp \lb e_{x\mapsto a} \rb$. 
+\item Avem c\u a $\cA \models \lp  \exists x(x=t)\rp[e]$ \ddacam  exist\u a $b \in A$ \ai $\cA \models (x=t)[e_{x \mapsto b}]$ \ddacam exist\u a $b \in A$ \ai $e_{x \mapsto b}(x)=t^\cA\lp e_{x \mapsto b}\rp$
+\ddacam exist\u a $b \in A$ \ai $b=t^\cA\lp e_{x \mapsto b}\rp$.  Cum $x \notin Var(t)$, 
+putem aplica  Propozi\c tia 4.44 pentru a ob\c tine c\u a  $t^\cA\lp e_{x \mapsto b}\rp =t^\cA(e)$. Deci trebuie ar\u atat doar c\u a exist\u a $b \in A$ astfel \^inc\^at $b=t^\cA(e)$. Dar acest lucru e simplu, doar lu\u am $b:=t^\cA(e)$.
+\ee
+}
+
+
+\semex
+S\u{a} se demonstreze c\u{a}:
+\be
+\item Dac\u a $\Gamma\models\vp$ \c si $\Gamma\models\vp \to \psi$, atunci $\Gamma\models\psi$.
+\item $\Gamma\models\vp \to \psi$ ddac\u a $\Gamma\cup \lbr \vp \rbr \models\psi$.
+\ee
+\solution{
+\be 
+\item Fie $(\cA,e)$ un model a lui $\Gamma$.  Conform ipotezei, avem c\u a $\cA \models\vp[e]$ \c si $\cA \models \lp \vp \ra \psi \rp[e]$, deci $\cA \models \lp \vp \si (\vp \ra \psi)\rp[e]$. Deoarece
+$ \vp \si (\vp \ra \psi)\to \psi$ este tautologie (a se vedea (S5.2).(i)), deci valid\u a, rezult\u a c\u a $\cA \models \lp \vp \si (\vp \ra \psi) \to \psi \rp[e]$. Ob\c tinem c\u a $\cA \models\psi[e]$.
+\item ($\Ra$) Deoarece $\Gamma\models\vp \to \psi$ \c si $\Gamma \se \Gamma\cup \lbr \vp \rbr$, rezult\u a c\u a  $\Gamma\cup \lbr \vp \rbr\models\vp \to \psi$. Cum $\Gamma\cup \lbr \vp \rbr \models\vp$, putem aplica (i) pentru a ob\c tine c\u a $\Gamma\cup \lbr \vp \rbr \models\psi$.
+
+($\La$) Presupunem c\u a $\Gamma\cup \lbr \vp \rbr \models\psi$ \c si fie $(\cA,e)$ un model a lui $\Gamma$.  Avem urm\u atoarele cazuri:
+\be
+\item  $\cA \not\models\vp[e]$. Atunci $\cA \models \lp \vp \ra \psi \rp[e]$. .
+\item $\cA \models\vp[e]$. Atunci $(\cA,e)$ este model a lui $\Gamma\cup \lbr \vp \rbr$, deci  $\cA  \models\psi[e]$, conform ipotezei.   Deoarece
+$\psi \to (\vp \ra \psi)$ este tautologie (a se vedea (S5.2).(ii)), deci valid\u a, rezult\u a c\u a $\cA \models \lp\psi \to (\vp \ra \psi)\rp[e]$. Ob\c tinem c\u a $\cA \models\lp \vp \to \psi \rp[e]$.
+\ee
+
+\ee
+}
+
+
+\semex
+Fie $x$ o variabil\u{a} 
+\ai pentru orice $\gamma\in \Gamma$, $x\notin FV(\gamma)$. Demonstra\c{t}i urm\u{a}toarele:
+\be
+\item $\Gamma\models\vp$ \ddacam $\Gamma\models\forall x\vp$.
+\item Dac\u{a} $x\notin FV(\psi)$, atunci $\Gamma\models\vp\ra\psi$  \ddacam $\Gamma\models \exists x\vp\ra \psi$.
+\ee
+\solution{
+Fie $\cA$ o $\lc$-structur\u{a} \c{s}i $e:V\to A$ \ai $(\cA,e)$ este model a lui $\Gamma$, adic\u a  $\cA\models \gamma[e]$ 
+pentru orice $\gamma \in \Gamma$.  
+
+Pentru orice $a\in A$, $\gamma\in \Gamma$, deoarece $x\notin FV(\gamma)$, avem c\u a $e$ \c si $e_{x\mapsto a}$ coincid pe $FV(\gamma)$, deci putem aplica Propozi\c tia 4.45 pentru a ob\c tine c\u a $\cA\models \gamma \lb e_{x\mapsto a} \rb$. 
+Prin urmare, pentru orice $a\in A$, $(\cA,e_{x\mapsto a})$ este model al lui $\Gamma$. Se poate ar\u ata foarte u\c sor 
+
+\be
+\item ($\La$) Presupunem c\u{a} $\Gamma\models\forall x\vp$. Deoarece $\models \forall x\vp\ra \vp$ (conform (S5.3)(i)),  avem c\u{a}  $\Gamma\models \forall x\vp\ra \vp$. Aplic\u am (S5.4)(i) pentru a concluziona c\u a $\Gamma\models\vp$.
+
+($\Ra$) Presupunem c\u{a} $\Gamma\models\vp$.  Fie $\cA$ o $\lc$-structur\u{a} \c{s}i $e:V\to A$ \ai $(\cA,e)$ este model a lui $\Gamma$, i.e. $\cA\models \gamma[e]$ 
+pentru orice $\gamma \in \Gamma$.  Pentru orice $a\in A$ \c si orice $\gamma\in \Gamma$, deoarece $x\notin FV(\gamma)$, avem c\u a $e$ \c si $e_{x\mapsto a}$ coincid pe $FV(\gamma)$, deci putem aplica Propozi\c tia 4.45 pentru a ob\c tine c\u a $\cA\models \gamma \lb e_{x\mapsto a} \rb$. 
+Prin urmare, pentru orice $a\in A$, $(\cA,e_{x\mapsto a})$ este model al lui $\Gamma$. Deoarece $\Gamma\models \vp$, ob\c tinem c\u a pentru orice $a\in A$, $\cA \models \vp\lb e_{x\mapsto a}\rb$, adic\u a $\cA \models (\forall x \vp][e]$. 
+
+\item  Deoarece $x\notin FV(\psi)$,  avem conform  (57) din  Propozi\c tia 4.46 c\u{a} $\forall x(\vp\ra\psi)  \vDashv \exists x\vp\ra \psi$. Ob\c{t}inem 
+$\Gamma\models \exists x\vp\ra \psi$ \ddacam $\Gamma\models\forall x(\vp\ra\psi)$ \ddacam $\Gamma\models\vp\ra\psi$, conform (i). 
+
+\ee
+ }
+
+\semex
+S\u{a} se demonstreze c\u{a}:
+\be
+\item $\Gamma\models \vp$ \ddacam $\Gamma\cup\{\neg\vp\}$ este nesatisfiabil\u{a}.
+\item $\Gamma\models \neg\vp$ \ddacam $\Gamma\cup\{\vp\}$ este nesatisfiabil\u{a}.
+\item Dac\u{a} $\Gamma$ este satisfiabil\u{a}, atunci cel pu\c{t}in una dintre 
+$\Gamma\cup\{\vp\}$ \c{s}i $\Gamma\cup\{\neg\vp\}$ este satisfiabil\u{a}.
+\ee
+\solution{
+\be
+\item 
+$\Gamma\not\models \vp$ \ddacam exist\u{a} o $\lc$-structur\u{a} $\cA$ \c{s}i o 
+evaluare $e:V\to A$ \ai
+$(\cA,e)$ este model al lui $\Gamma$ \c si $\cA\not\models \vp[e]$ \ddacam 
+exist\u{a} o $\lc$-structur\u{a} $\cA$ \c{s}i o evaluare $e:V\to A$ \ai
+$(\cA,e)$ este model al lui $\Gamma$ \c si $\cA\models (\neg\vp)[e]$ \ddacam 
+$\Gamma\cup\{\neg\vp\}$ este satisfiabil\u{a}.
+\item Similar. 
+\item Fie  $(\cA, e)$ un model al lui $\Gamma$. 
+Avem fie $\cA\models \vp[e]$, fie 
+$\cA\models (\neg\vp)[e]$. Rezult\u{a} c\u{a} $(\cA, e)$ este model al lui $\Gamma\cup\{\vp\}$ sau al lui 
+$\Gamma\cup\{\neg\vp\}$. Concluzia rezult\u{a}. 
+\ee
+}
+
+
+\end{document}
+
+
+

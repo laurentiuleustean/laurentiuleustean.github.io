@@ -1,0 +1,177 @@
+\documentclass[12pt]{article}
+
+
+\usepackage{macros}
+\usepackage{macros-gen-ro}
+\usepackage{macros-curs-ro}
+\usepackage{macros-math}
+\usepackage{macros-logic}
+
+
+\begin{document}
+
+
+\renewcommand{\seminarno}{6}
+\setcounter{exercitiuno}{0}
+
+\titluseminarLM
+
+
+\renewcommand{\solution}[1]{}
+
+\parindent0pt
+
+
+
+\parindent0pt
+
+
+Pentru primele dou\u a exerci\c tii, fix\u am $\lc$ un limbaj de ordinul I care con\c{t}ine:
+\bi
+\item dou\u{a} simboluri de rela\c{t}ii unare $R$, $S$  \c{s}i dou\u{a} simboluri de rela\c{t}ii binare $P$, $Q$;
+\item un  simbol de func\c{t}ie unar\u{a} $f$ \c{s}i un simbol de func\c{t}ie binar\u{a} $g$;
+\item dou\u{a} simboluri de constante $c$, $d$.
+\ei
+
+\semex
+S\u{a} se g\u{a}seasc\u{a} forme normale prenex pentru urm\u{a}toarele formule ale lui $\lc$:
+\be 
+\item  $\forall x(f(x)=c)\si \neg \forall z(g(y,z)=d)$;
+\item  $\forall y(\forall x P(x,y)\ra \exists z Q(x,z))$;
+\item $\exists x\forall y P(x,y) \sau \neg\exists y(S(y)\ra \forall z R(z))$;
+\item $\exists z(\exists x Q(x, z) \sau \exists x R(x))\ra \neg (\neg \exists x R(x) \si \forall x \exists zQ(z,x))$.
+\ee
+\solution{
+\be 
+\item
+\bua
+\forall x(f(x)=c)\si \neg \forall z(g(y,z)=d) &\vDashv & \forall x(f(x)=c)\si \exists z \neg(g(y,z)=d)\\
+&\vDashv & \forall x\exists z(f(x)=c\si \neg(g(y,z)=d)).
+\eua
+\item 
+\bua 
+ \forall y(\forall x P(x,y)\ra \exists z Q(x,z)) &\vDashv &  \forall y\exists z (\forall x P(x,y)\ra Q(x,z))\\
+&\vDashv &
+ \forall y\exists z (\forall u P(u,y)\ra Q(x,z))\\
+&\vDashv &  \forall y\exists z \exists u (P(u,y)\ra Q(x,z)).
+ \eua
+\item 
+ \bua
+ \exists x\forall y P(x,y) \sau \neg \exists y(S(y)\ra \forall z R(z)) &\vDashv & 
+  \exists x(\forall y P(x,y)\sau \neg\exists y\forall z(S(y)\ra R(z))\\
+  &\vDashv &  \exists x(\forall y P(x,y)\sau \forall  y\exists z\neg (S(y)\ra R(z)) \\
+&\vDashv &  \exists x(\forall u P(x,u)\sau \forall  y\exists z\neg (S(y)\ra R(z))\\
+    &\vDashv &  \exists x\forall u \forall y \exists z(P(x,u)\sau \neg (S(y)\ra R(z)).
+ \eua 
+\item 
+ \bua
+\exists z(\exists x Q(x, z) \sau \exists x R(x))\ra \neg (\neg \exists x R(x) \si
+\forall x \exists zQ(z,x)) &\vDashv & \\
+\exists z\exists x( Q(x, z) \sau R(x))\ra (\neg\neg\exists xR(x)\sau \neg\forall x \exists zQ(z,x))
+&\vDashv & \\
+\exists z\exists x( Q(x, z) \sau R(x))\ra (\exists xR(x) \sau \exists x\forall z \neg Q(z,x))&\vDashv & \\
+\exists z\exists x( Q(x, z) \sau R(x))\ra
+\exists x (R(x) \sau \forall z \neg Q(z,x))&\vDashv & \\
+\exists z\exists x( Q(x, z) \sau R(x))\ra
+\exists x \forall z(R(x)\sau \neg Q(z,x))&\vDashv & \\
+\exists z\exists x( Q(x, z) \sau R(x))\ra
+\exists u \forall v(R(u)\sau \neg Q(v,u))&\vDashv & \\
+\forall z\forall x\exists u \forall v ((Q(x, z) \sau R(x))\ra (R(u)\sau \neg Q(v,u))).
+\eua
+\ee
+}
+
+
+\semex
+S\u{a} se g\u{a}seasc\u{a} o form\u a normal\u a Skolem pentru enun\c tul $\vp$ \^in form\u a 
+normal\u a prenex, unde $\vp$ este, pe r\^and:
+\be
+\item $\forall x\exists z(f(x)=c\si \neg(g(x,z)=d))$;
+\item $\forall y\exists z \exists u (P(u,y)\ra Q(y,z))$;
+\item $\exists x\forall u \forall y \exists z(P(x,u)\sau \neg (S(y)\ra R(z)))$;
+\item $\forall z\forall x\exists u \forall v ((Q(x, z) \sau R(x))\ra (R(u)\sau \neg Q(v,u)))$.
+\ee
+\solution{
+\be
+\item Avem $\vp^1 = \forall x(f(x)=c\si \neg(g(x,z)=d)_z(h(x)) = \forall x(f(x)=c\si \neg(g(x,h(x))=d)$, unde $h$ este un nou simbol de opera\c tie unar\u a. Cum $\vp^1$ este o formul\u a universal\u a avem $\vp^{Sk}=\vp^1$.
+\item Avem $\vp^1 = \forall y \exists u (P(u,y)\ra Q(y,z))_z(p(y)) = \forall y \exists u (P(u,y)\ra Q(y,p(y)))$, unde $p$ este un nou simbol de opera\c tie unar\u a, \c si $\vp^2 = \forall y  (P(u,y)\ra Q(y,p(y)))_u(j(y)) = \forall y  (P(j(y),y)\ra Q(y,p(y)))$, unde $j$ este un nou simbol de opera\c tie unar\u a. Cum $\vp^2$ este o formul\u a universal\u a avem $\vp^{Sk}=\vp^2$.
+\item Avem $\vp^1 = \forall u \forall y \exists z(P(x,u)\sau \neg (S(y)\ra R(z)))_x(m) =\forall u \forall y \exists z(P(m,u)\sau \neg (S(y)\ra R(z)))$, unde $m$ este un nou simbol de constant\u a, \c si $\vp^2 = \forall u \forall y(P(m,u)\sau \neg (S(y)\ra R(z)))_z(k(u,y)) = \forall u \forall y (P(m,u)\sau \neg (S(y)\ra R(k(u,y))))$, unde $k$ este un nou simbol de opera\c tie binar\u a. Cum $\vp^2$ este o formul\u a universal\u a avem $\vp^{Sk}=\vp^2$.
+\item Avem
+\begin{align*}
+\vp^1 &= \forall z\forall x \forall v ((Q(x, z) \sau R(x))\ra (R(u)\sau \neg Q(v,u)))_u(n(z,x))\\
+&= \forall z\forall x \forall v ((Q(x, z) \sau R(x))\ra (R(n(z,x))\sau \neg Q(v,n(z,x)))),
+\end{align*}
+unde $n$ este un nou simbol de opera\c tie binar\u a. Cum $\vp^1$ este o formul\u a universal\u a avem $\vp^{Sk}=\vp^1$. 
+\ee 
+}
+
+\semex
+Demonstra\c{t}i c\u{a} orice clas\u{a} finit axiomatizabil\u{a} $\cK$ de $\lc$-structuri este axiomatizat\u{a} de un singur enun\c{t}.
+
+\solution{
+Fie $\Gamma=\{\vp_1,\ldots, \vp_n\}$  o mul\c time finit\u a de enun\c turi  \ai $\cK=Mod(\Gamma)$. Fie $\vp:=\vp_1\wedge \vp_2 \si \ldots \si  \vp_n$. Atunci $\cA\models \Gamma \Ba \cA\models \vp_i$ pentru orice $i\in\{1,\ldots, n\}$ $\Ba$ $\cA\models \vp$. A\c{s}adar, $Mod(\vp)=Mod(\Gamma)=\cK$. 
+}
+
+\semex
+Demonstra\c ti c\u a dac\u a o clas\u a $\cK$ de $\lc$-structuri  este finit axiomatizabil\u a, atunci 
+complementul s\u a $\cK^c$ este de asemenea finit axiomatizabil\u a.
+
+\solution{Conform (S6.3), $\cK$ este axiomatizat\u a de un singur enun\c t $\vp$,  
+deci $\cK=Mod(\vp)$. Rezult\u a imediat c\u a pentru orice $\lc$-structur\u a $\cA$, 
+\[\cA\in \cK^c \Ba \cA\notin \cK \Ba\cA\not\models \vp \Ba \cA \models \neg\vp.\] 
+Prin urmare, $\cK^c=Mod(\neg\vp)$.
+}
+
+\semex
+Consider\u am limbajul $\lc$ ce con\c tine un singur simbol, anume un simbol de rela\c tie de aritate $2$. S\u a se g\u aseasc\u a un enun\c t $\vp$ astfel \^inc\^at $(\Q,<) \models \vp$, dar $(\Z,<) \not\models \vp$.
+
+\solution{
+Lu\u am
+$$\vp:= \forall v_0 \forall v_1 (v_0 < v_1 \to \exists v_2 (v_0 < v_2 \si v_2 < v_1)).$$
+
+Atunci  $(\Q,<) \models \vp$ ddac\u a 
+\bce 
+(*) \quad pentru orice $p,q\in \Q$ cu $p<q$ exist\u a $r\in \Q$ \ai $p<r<q$,
+\ece
+ceea ce este adev\u arat. 
+
+Deci, $(\Q,<) \models \vp$.
+
+Pe de alta parte, $(\Z,<) \models \vp$ ddac\u a 
+\bce 
+(**) \quad pentru orice $m,n\in \Z$ cu $m<n$ exist\u a $p\in \Z$ \ai $m<p<n$,
+\ece
+ceea ce este fals: pentru $m=1$ \c si $n=2$, nu exist\u a  $p\in \Z$ \ai $1<p<2$. 
+
+Deci, $(\Z,<) \not\models \vp$.
+}
+
+\semex
+Fie $\lc$ un limbaj de ordinul \^int\^ai \c si $\Gamma$ o mul\c time de enun\c turi ale lui $\lc$. 
+Demonstra\c ti urm\u atoarele:
+\be
+\item $Mod(\Gamma)=Mod(Th(\Gamma))$.
+\item $Th(\Gamma)$ este o $\lc$-teorie.
+\item Fie $T$ o $\lc$-teorie  \ai $\Gamma \se T$. Atunci $Th(\Gamma) \se T$.
+\ee
+\solution{
+\be
+\item "$\supseteq$"  Pentru orice $\vp\in \Gamma$, avem c\u a $\Gamma \models \vp$, deci  $\vp\in Th(\Gamma)$.  A\c sadar, $\Gamma\se Th(\Gamma)$.  Aplic\u am  Lema~4.72.(ii). \\
+"$\subseteq$" Fie $\cA \in Mod(\Gamma)$ \c si $\vp\in Th(\Gamma)$ arbitrar. Avem c\u a 
+$\cA \models \Gamma$ \c si $\Gamma\models \vp$, deci $\cA\models \vp$.  A\c sadar, $\cA\in  
+Mod(Th(\Gamma))$.
+\item   Demonstr\u am c\u a $Th(\Gamma)$ este o $\lc$-teorie. Pentru orice enun\c t $\vp$,  avem c\u a
+\bua 
+Th(\Gamma)\models \vp & \Ba & Mod(Th(\Gamma))\se Mod(\vp)
+\Ba Mod(\Gamma)\se Mod(\vp) \text{~(conform (i))} \\
+& \Ba & \Gamma\models\vp \Ba \vp \in Th(\Gamma).
+\eua
+
+\item Fie $T$ o $\lc$-teorie care con\c tine $\Gamma$ \c si $\vp\in Th(\Gamma)$. Din 
+$Mod(\Gamma)\se Mod(\vp)$ \c si $Mod(T)\se Mod(\Gamma)$ rezult\u a c\u a $Mod(T)\se Mod(\vp)$, deci
+$T\models \vp$. Deoarece $T$ este$\lc$-teorie, ob\c tinem c\u a $\vp\in T$. A\c sadar, $Th(\Gamma)\se T$.
+\ee
+}
+
+
+\end{document}
